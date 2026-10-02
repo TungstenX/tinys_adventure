@@ -1,0 +1,12 @@
+keys,en,es
+ui.new_game,New Game,Nuevo Juego
+ui.load_game,Load Game,Cargar Partida
+ui.save_game,Save Game,Guardar Partida
+ui.settings,Settings,Configuración
+ui.about,About,Acerca de
+ui.exit,Exit,Salida
+ui.victorious,Victorious,Victorioso
+ui.game_over,Game Over,Fin del juego
+ui.replay,Replay,Repetir
+ui.main_menu,Main Menu,Menú principal
+ui.f1.help,Help,Ayuda

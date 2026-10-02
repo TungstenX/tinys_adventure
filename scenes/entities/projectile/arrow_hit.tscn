@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bcwfhs2xc7vxj"]
+
+[ext_resource type="Texture2D" uid="uid://qimlihmp4qsi" path="res://assets/sprites/projectile/Arrow.png" id="1_04frf"]
+[ext_resource type="Script" uid="uid://cnn2j3g8wxntf" path="res://scenes/entities/projectile/arrow_hit.gd" id="1_g74gn"]
+
+[node name="ArrowHit" type="Node2D" unique_id=2113211877]
+script = ExtResource("1_g74gn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1974178247]
+texture = ExtResource("1_04frf")
+vframes = 2

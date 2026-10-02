@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ciijygh1eyggk"]
+
+[ext_resource type="Script" uid="uid://c3ypb8b6gx540" path="res://scenes/template/building.gd" id="1_7hfn7"]
+[ext_resource type="Texture2D" uid="uid://dva15jmwon0p5" path="res://assets/environment/buildings/blue/Monastery.png" id="2_7hfn7"]
+[ext_resource type="PackedScene" uid="uid://clmpujayoeo7c" path="res://scenes/template/speech_bubble.tscn" id="3_r44xc"]
+[ext_resource type="PackedScene" uid="uid://c83vq1vj6kq6q" path="res://scenes/template/popup_menu.tscn" id="4_d54kq"]
+[ext_resource type="PackedScene" uid="uid://bddtk27cnju0v" path="res://scenes/template/small_sign.tscn" id="5_stk5j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t4a7r"]
+size = Vector2(118, 70)
+
+[node name="Monastery" type="CharacterBody2D" unique_id=435201923]
+script = ExtResource("1_7hfn7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=311354619]
+position = Vector2(0, -128)
+texture = ExtResource("2_7hfn7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1099359083]
+position = Vector2(1, -25)
+shape = SubResource("RectangleShape2D_t4a7r")
+
+[node name="SpeechBubble" parent="." unique_id=785480615 instance=ExtResource("3_r44xc")]
+visible = false
+offset_left = -1.0
+offset_top = -61.0
+offset_right = -1.0
+offset_bottom = -61.0
+
+[node name="PopupMenu" parent="." unique_id=1575655396 instance=ExtResource("4_d54kq")]
+z_index = 99
+offset_top = -246.0
+offset_bottom = -246.0
+
+[node name="SmallSign" parent="." unique_id=943491670 instance=ExtResource("5_stk5j")]
+position = Vector2(43, -11)

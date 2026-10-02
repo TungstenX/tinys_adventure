@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dtqd4xo3p5rau"]
+
+[ext_resource type="Script" uid="uid://oef1ik2770tu" path="res://scenes/entities/projectile/projectile.gd" id="1_xieo8"]
+[ext_resource type="Texture2D" uid="uid://e80368xx28sj" path="res://assets/sprites/projectile/bomb_projectile.png" id="3_cfu8n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_615lj"]
+radius = 17.0
+
+[sub_resource type="Animation" id="Animation_635qg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8akj5"]
+resource_name = "fly"
+length = 0.39999999999999997
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_58kc7"]
+resource_name = "idle"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_c8ylr"]
+resource_name = "land"
+length = 0.39999999999999997
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bjvvg"]
+_data = {
+&"RESET": SubResource("Animation_635qg"),
+&"fly": SubResource("Animation_8akj5"),
+&"idle": SubResource("Animation_58kc7"),
+&"land": SubResource("Animation_c8ylr")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xyhvv"]
+radius = 24.33105
+
+[node name="BombProjectile" type="CharacterBody2D" unique_id=1756380663 groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_xieo8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1800450619]
+position = Vector2(0, -18)
+texture = ExtResource("3_cfu8n")
+hframes = 4
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1811134713]
+shape = SubResource("CircleShape2D_615lj")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1842239529]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735467378]
+libraries/ = SubResource("AnimationLibrary_bjvvg")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1449853215]
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 48.0
+neighbor_distance = 128.0
+max_speed = 128.0
+debug_enabled = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=626479592]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=425116102]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_xyhvv")
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

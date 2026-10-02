@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://cca3yha14qfeq"]
+
+[ext_resource type="Script" uid="uid://x6ce0b4goqqd" path="res://scenes/template/f_menu.gd" id="1_dkcfs"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="2_rhlf8"]
+[ext_resource type="Texture2D" uid="uid://b7r8pk8m8mkk5" path="res://assets/ui/elements/Banner_Vertical.png" id="3_o5ex1"]
+[ext_resource type="Texture2D" uid="uid://0ejmte6f5go1" path="res://assets/ui/elements/icons/Icon_03.png" id="4_rhlf8"]
+
+[node name="FMenu" type="Control" unique_id=894612626]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dkcfs")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=225063038]
+custom_minimum_size = Vector2(0, 120)
+custom_maximum_size = Vector2(-1, 120)
+layout_mode = 0
+offset_right = 151.0
+offset_bottom = 120.0
+theme = ExtResource("2_rhlf8")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="PanelContainer" unique_id=1948545249]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_rhlf8")
+texture = ExtResource("3_o5ex1")
+patch_margin_left = 56
+patch_margin_top = 64
+patch_margin_right = 56
+patch_margin_bottom = 60
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/NinePatchRect" unique_id=2122915608]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/NinePatchRect/HBoxContainer" unique_id=331889303]
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 2
+
+[node name="Key" type="Label" parent="PanelContainer/NinePatchRect/HBoxContainer" unique_id=630342349]
+custom_minimum_size = Vector2(47, 0)
+custom_maximum_size = Vector2(47, -1)
+layout_mode = 2
+text = "F9"
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/NinePatchRect/HBoxContainer" unique_id=214538667]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_rhlf8")
+
+[node name="AltText" type="Label" parent="PanelContainer/NinePatchRect/HBoxContainer" unique_id=1955651199]
+visible = false
+custom_minimum_size = Vector2(47, 0)
+custom_maximum_size = Vector2(47, -1)
+layout_mode = 2
+text = "?"
+horizontal_alignment = 2
+vertical_alignment = 1

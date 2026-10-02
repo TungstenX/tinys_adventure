@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cokrktr376ce0"]
+
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="1_05fxp"]
+[ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="2_iukra"]
+[ext_resource type="Script" uid="uid://c1xs4g1xa2e0c" path="res://scenes/template/stat_slot.gd" id="2_n10s0"]
+[ext_resource type="Texture2D" uid="uid://v0oew35a07u6" path="res://assets/environment/props/03.png" id="3_n10s0"]
+
+[node name="StatSlot" type="Control" unique_id=1119977959]
+custom_minimum_size = Vector2(72, 64)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_05fxp")
+script = ExtResource("2_n10s0")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1642963481]
+custom_maximum_size = Vector2(72, -1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_iukra")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1424709062]
+layout_mode = 1
+offset_left = 4.0
+offset_top = 10.0
+offset_right = 68.0
+offset_bottom = 52.0
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer" unique_id=1971374851]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_n10s0")
+expand_mode = 3
+
+[node name="Amount" type="Label" parent="HBoxContainer" unique_id=1970687111]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "00"
+horizontal_alignment = 2
+vertical_alignment = 1

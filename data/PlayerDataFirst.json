@@ -1,0 +1,49 @@
+{
+	"_ver": "0.0.0",
+	"buff_instance_ids": [
+		"ce8fb162-1089-4672-bf6c-e60f48c33395",
+		"55764fd4-bb35-4a0b-ba8f-a49d8f4509e2",
+		"7b51baaf-f2da-4e29-8d1b-60f136bb6981"
+	],
+	"current_derived": {
+		"acc": 50,
+		"atk": 60,
+		"cc": 50,
+		"def": 50,
+		"eva": 50,
+		"hp": 180.0,
+		"res": 50,
+		"spd": 400
+	},
+	"inventory": [
+		{
+			"amount": 0,
+			"id": 0,
+			"max": 99
+		},
+		{
+			"amount": 0,
+			"id": 1,
+			"max": 5
+		}
+	],
+	"inventory_capacity": {
+		"number_of_slots": 30,
+		"weight_volume": 30
+	},
+	"player_experience": 0,
+	"player_level": 1,
+	"skills": {
+		"all_skills": [],
+		"all_skills_multiplier": [],
+		"all_skills_xp": []
+	},
+	"stats": {
+		"agility": 0,
+		"endurance": 0,
+		"intellect": 0,
+		"might": 0,
+		"perception": 0,
+		"willpower": 0
+	}
+}

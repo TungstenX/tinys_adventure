@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bxw51hivmkh0n"]
+
+[ext_resource type="Script" uid="uid://c3ypb8b6gx540" path="res://scenes/template/building.gd" id="1_3ruui"]
+[ext_resource type="Texture2D" uid="uid://cy8jk73spl3y6" path="res://assets/environment/buildings/black/House2.png" id="1_4knj8"]
+[ext_resource type="PackedScene" uid="uid://clmpujayoeo7c" path="res://scenes/template/speech_bubble.tscn" id="2_3ruui"]
+[ext_resource type="PackedScene" uid="uid://bddtk27cnju0v" path="res://scenes/template/small_sign.tscn" id="5_1vr7i"]
+[ext_resource type="PackedScene" uid="uid://c83vq1vj6kq6q" path="res://scenes/template/popup_menu.tscn" id="5_8qos7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_615lj"]
+size = Vector2(111, 70)
+
+[node name="Building" type="Node2D" unique_id=1016303689]
+script = ExtResource("1_3ruui")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=311354619]
+texture = ExtResource("1_4knj8")
+
+[node name="SpeechBubble" parent="." unique_id=785480615 instance=ExtResource("2_3ruui")]
+visible = false
+offset_left = -1.0
+offset_top = -61.0
+offset_right = -1.0
+offset_bottom = -61.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=332671321]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1547036320]
+position = Vector2(-1.5, 43)
+shape = SubResource("RectangleShape2D_615lj")
+
+[node name="PopupMenu" parent="." unique_id=1575655396 instance=ExtResource("5_8qos7")]
+z_index = 99
+offset_top = -116.0
+offset_bottom = -116.0
+
+[node name="SmallSign" parent="." unique_id=943491670 instance=ExtResource("5_1vr7i")]
+position = Vector2(-7, 52)
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,220 @@
+[gd_scene format=3 uid="uid://ckk0ho7nl0xtp"]
+
+[ext_resource type="Script" uid="uid://cgh5pcyf6kcli" path="res://scenes/main/game_scene.gd" id="1_rfwcf"]
+[ext_resource type="PackedScene" uid="uid://b1j1j5xfvr6oa" path="res://scenes/maps/test_map.tscn" id="1_sdya7"]
+[ext_resource type="PackedScene" uid="uid://0qmg788gcigk" path="res://scenes/ui/end_game_screen.tscn" id="2_5odut"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="4_ynmmy"]
+[ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="5_o41ig"]
+[ext_resource type="Script" uid="uid://dgsmm28y6ijiq" path="res://scenes/main/hud.gd" id="5_wktqh"]
+[ext_resource type="Texture2D" uid="uid://by2tr4oqf3u47" path="res://assets/ui/elements/Banner_Connection_Up.png" id="6_wktqh"]
+[ext_resource type="PackedScene" uid="uid://cca3yha14qfeq" path="res://scenes/template/f_menu.tscn" id="8_wktqh"]
+[ext_resource type="PackedScene" uid="uid://x13bktcnaixm" path="res://scenes/template/inventory_slot.tscn" id="9_jck2h"]
+[ext_resource type="Texture2D" uid="uid://0ejmte6f5go1" path="res://assets/ui/elements/icons/Icon_03.png" id="10_2kpdr"]
+[ext_resource type="Texture2D" uid="uid://v0oew35a07u6" path="res://assets/environment/props/03.png" id="10_17w4u"]
+[ext_resource type="PackedScene" uid="uid://cokrktr376ce0" path="res://scenes/template/stat_slot.tscn" id="12_x5m58"]
+[ext_resource type="Texture2D" uid="uid://crwlphqv4ceun" path="res://assets/ui/elements/icons/Icon_04.png" id="13_i2glb"]
+[ext_resource type="Texture2D" uid="uid://b76x5s8mmwjdf" path="res://assets/ui/elements/icons/Icon_05.png" id="14_3trih"]
+[ext_resource type="Texture2D" uid="uid://etalrpvtabs8" path="res://assets/ui/elements/icons/Icon_06.png" id="15_5smp8"]
+[ext_resource type="Texture2D" uid="uid://bwarmingd2nyc" path="res://assets/ui/elements/icons/Icon_08.png" id="16_nh11s"]
+[ext_resource type="Texture2D" uid="uid://dxvmxopp1hu56" path="res://assets/ui/elements/icons/Icon_01.png" id="17_rc4em"]
+[ext_resource type="PackedScene" uid="uid://8sycuytig4ud" path="res://scenes/template/god_response.tscn" id="18_5smp8"]
+
+[node name="GameScene" type="Node2D" unique_id=645090613]
+script = ExtResource("1_rfwcf")
+end_game_screen_packed = ExtResource("2_5odut")
+
+[node name="TestMap" parent="." unique_id=2045157902 instance=ExtResource("1_sdya7")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=986976175]
+
+[node name="HUD" type="Control" parent="UI" unique_id=1090781711 groups=["hud"]]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("4_ynmmy")
+script = ExtResource("5_wktqh")
+
+[node name="Hitpoints" type="TextureRect" parent="UI/HUD" unique_id=880065611]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 50.0
+offset_right = 470.0
+offset_bottom = 120.0
+texture = ExtResource("5_o41ig")
+
+[node name="HitpointsBar" type="TextureProgressBar" parent="UI/HUD/Hitpoints" unique_id=205731673]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -27.5
+offset_right = 190.0
+offset_bottom = 27.5
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+texture_progress = ExtResource("5_o41ig")
+tint_progress = Color(0.5019608, 1, 0, 1)
+
+[node name="LevelIndicator" type="TextureRect" parent="UI/HUD" unique_id=1564139613]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 39.0
+offset_top = 54.0
+offset_right = 231.0
+offset_bottom = 246.0
+texture = ExtResource("6_wktqh")
+
+[node name="CurrentLevel" type="Label" parent="UI/HUD/LevelIndicator" unique_id=557834367]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "-"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FKeys" type="PanelContainer" parent="UI/HUD" unique_id=941844799]
+custom_minimum_size = Vector2(318, 120)
+custom_maximum_size = Vector2(-1, 120)
+layout_mode = 1
+offset_right = 151.0
+offset_bottom = 120.0
+
+[node name="FMenu1" parent="UI/HUD/FKeys" unique_id=894612626 instance=ExtResource("8_wktqh")]
+custom_minimum_size = Vector2(151, 0)
+custom_maximum_size = Vector2(151, -1)
+layout_mode = 2
+menu_fn_alt_text = "?"
+
+[node name="FMenu2" parent="UI/HUD/FKeys" unique_id=1862805949 instance=ExtResource("8_wktqh")]
+custom_minimum_size = Vector2(151, 0)
+custom_maximum_size = Vector2(151, -1)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_position = Vector2(167, 0)
+menu_fn_key = 1
+
+[node name="Container" type="Control" parent="UI/HUD" unique_id=622450449]
+custom_minimum_size = Vector2(1920, 120)
+layout_mode = 1
+anchors_preset = 0
+
+[node name="InventoryPanel" type="Panel" parent="UI/HUD" unique_id=784712686]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 600.0
+offset_right = 672.0
+offset_bottom = 1080.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Inventory" type="VBoxContainer" parent="UI/HUD" unique_id=196392672]
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 132.0
+alignment = 1
+
+[node name="InventorySlot2" parent="UI/HUD/Inventory" unique_id=1405290813 instance=ExtResource("9_jck2h")]
+layout_mode = 2
+icon = ExtResource("10_2kpdr")
+
+[node name="InventorySlot" parent="UI/HUD/Inventory" unique_id=1923835725 instance=ExtResource("9_jck2h")]
+layout_mode = 2
+type = 1
+icon = ExtResource("10_17w4u")
+
+[node name="HirePanel" type="Panel" parent="UI/HUD" unique_id=756227899]
+custom_minimum_size = Vector2(72, 0)
+custom_maximum_size = Vector2(72, 500)
+layout_mode = 0
+offset_top = 800.0
+offset_right = 500.0
+offset_bottom = 872.0
+
+[node name="Hire" type="VBoxContainer" parent="UI/HUD" unique_id=1760243065]
+custom_minimum_size = Vector2(72, 500)
+layout_mode = 0
+offset_left = 250.0
+offset_top = 800.0
+offset_right = 250.0
+offset_bottom = 872.0
+alignment = 1
+
+[node name="StatsPanel" type="Panel" parent="UI/HUD" unique_id=262138526]
+custom_minimum_size = Vector2(604, 64)
+custom_maximum_size = Vector2(-1, 64)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Stats" type="HBoxContainer" parent="UI/HUD" unique_id=908252447]
+custom_minimum_size = Vector2(604, 64)
+custom_maximum_size = Vector2(-1, 72)
+layout_mode = 1
+offset_right = 72.0
+offset_bottom = 540.0
+alignment = 1
+
+[node name="Hp" parent="UI/HUD/Stats" unique_id=1119977959 instance=ExtResource("12_x5m58")]
+visible = false
+layout_mode = 2
+icon = ExtResource("13_i2glb")
+
+[node name="Atk" parent="UI/HUD/Stats" unique_id=1399085880 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("14_3trih")
+
+[node name="Def" parent="UI/HUD/Stats" unique_id=781159742 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("15_5smp8")
+
+[node name="Spd" parent="UI/HUD/Stats" unique_id=67661365 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("16_nh11s")
+
+[node name="Eva" parent="UI/HUD/Stats" unique_id=868066401 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("16_nh11s")
+
+[node name="Acc" parent="UI/HUD/Stats" unique_id=1962545590 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("16_nh11s")
+
+[node name="Res" parent="UI/HUD/Stats" unique_id=316112615 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("16_nh11s")
+
+[node name="Cc" parent="UI/HUD/Stats" unique_id=1280629082 instance=ExtResource("12_x5m58")]
+layout_mode = 2
+icon = ExtResource("17_rc4em")
+
+[node name="GodResponse" parent="UI/HUD" unique_id=1343575783 instance=ExtResource("18_5smp8")]
+visible = false
+layout_mode = 1
+offset_left = 1244.0
+offset_right = 1244.0
+
+[node name="DevilResponse" parent="UI/HUD" unique_id=2130800565 instance=ExtResource("18_5smp8")]
+visible = false
+custom_minimum_size = Vector2(235, 100)
+layout_mode = 1
+offset_top = 932.0
+offset_right = 235.0
+offset_bottom = 1032.0
+which = 1
+
+[connection signal="mouse_entered" from="UI/HUD/Container" to="UI/HUD" method="_on_container_mouse_entered"]
+[connection signal="mouse_exited" from="UI/HUD/Container" to="UI/HUD" method="_on_container_mouse_exited"]

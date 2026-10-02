@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://x13bktcnaixm"]
+
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="1_8w834"]
+[ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="2_fi62g"]
+[ext_resource type="Script" uid="uid://cqsgjw1av607b" path="res://scenes/template/inventory_slot.gd" id="2_uwfxv"]
+[ext_resource type="Texture2D" uid="uid://v0oew35a07u6" path="res://assets/environment/props/03.png" id="3_uwfxv"]
+
+[node name="InventorySlot" type="Control" unique_id=1405290813]
+custom_minimum_size = Vector2(72, 64)
+custom_maximum_size = Vector2(72, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1848.0
+offset_bottom = -1016.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_8w834")
+script = ExtResource("2_uwfxv")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2076618560]
+custom_maximum_size = Vector2(72, -1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_fi62g")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=1495503815]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Amount" type="Label" parent="TextureRect/HBoxContainer" unique_id=668352510]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "00"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="TextureRect/HBoxContainer" unique_id=1612468589]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("3_uwfxv")
+expand_mode = 3

@@ -1,0 +1,344 @@
+[gd_scene format=3 uid="uid://c83vq1vj6kq6q"]
+
+[ext_resource type="Script" uid="uid://bef2gjqrcx28v" path="res://scenes/template/popup_menu.gd" id="1_hxpqm"]
+[ext_resource type="Texture2D" uid="uid://c00xldty6byst" path="res://assets/ui/elements/wood_table_top_left.png" id="1_osyey"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="1_w3610"]
+[ext_resource type="Texture2D" uid="uid://dpqx45k2ykl5m" path="res://assets/ui/elements/wood_table_top_center.png" id="2_scotp"]
+[ext_resource type="Texture2D" uid="uid://dk7idf0clqk2p" path="res://assets/ui/elements/wood_table_top_right.png" id="3_ucwtu"]
+[ext_resource type="Texture2D" uid="uid://f6jhf3h7wnm8" path="res://assets/ui/elements/wood_table_middle_left.png" id="4_w3610"]
+[ext_resource type="Texture2D" uid="uid://bhw68x6oc46qj" path="res://assets/ui/elements/wood_table_middle_center.png" id="5_loe3i"]
+[ext_resource type="Texture2D" uid="uid://dixqds0jqgeae" path="res://assets/ui/elements/wood_table_middle_right.png" id="6_nxx2y"]
+[ext_resource type="Texture2D" uid="uid://dgjr3njhqioku" path="res://assets/ui/elements/wood_table_bottom_left.png" id="7_n28c8"]
+[ext_resource type="Texture2D" uid="uid://ckp2k8gvl1042" path="res://assets/ui/elements/wood_table_bottom_center.png" id="8_hxpqm"]
+[ext_resource type="Texture2D" uid="uid://cwhhhmayktsba" path="res://assets/ui/elements/wood_table_bottom_right.png" id="9_6uh8r"]
+[ext_resource type="Texture2D" uid="uid://0ejmte6f5go1" path="res://assets/ui/elements/icons/Icon_03.png" id="10_oqagx"]
+[ext_resource type="Texture2D" uid="uid://cd18ph565uph6" path="res://assets/ui/elements/icons/arrow_icon.png" id="12_hxpqm"]
+
+[node name="PopupMenu" type="Control" unique_id=148731266]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_w3610")
+script = ExtResource("1_hxpqm")
+
+[node name="VBG" type="VBoxContainer" parent="." unique_id=944645920]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 126.0
+offset_bottom = 131.0
+theme_override_constants/separation = 0
+
+[node name="HBG1" type="HBoxContainer" parent="VBG" unique_id=822282294]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBG/HBG1" unique_id=753657166]
+custom_minimum_size = Vector2(42, 43)
+custom_maximum_size = Vector2(42, 43)
+layout_mode = 2
+texture = ExtResource("1_osyey")
+
+[node name="TextureRect2" type="TextureRect" parent="VBG/HBG1" unique_id=1676804342]
+custom_minimum_size = Vector2(46, 43)
+custom_maximum_size = Vector2(46, 43)
+layout_mode = 2
+texture = ExtResource("2_scotp")
+
+[node name="TextureRect3" type="TextureRect" parent="VBG/HBG1" unique_id=1440122656]
+custom_minimum_size = Vector2(42, 43)
+custom_maximum_size = Vector2(42, 43)
+layout_mode = 2
+texture = ExtResource("3_ucwtu")
+
+[node name="HBG2" type="HBoxContainer" parent="VBG" unique_id=1716464056]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBG/HBG2" unique_id=1619117449]
+custom_minimum_size = Vector2(42, 43)
+custom_maximum_size = Vector2(42, 43)
+layout_mode = 2
+texture = ExtResource("4_w3610")
+
+[node name="TextureRect2" type="TextureRect" parent="VBG/HBG2" unique_id=746304699]
+custom_minimum_size = Vector2(46, 43)
+custom_maximum_size = Vector2(46, 43)
+layout_mode = 2
+texture = ExtResource("5_loe3i")
+
+[node name="TextureRect3" type="TextureRect" parent="VBG/HBG2" unique_id=302475570]
+custom_minimum_size = Vector2(42, 43)
+custom_maximum_size = Vector2(42, 43)
+layout_mode = 2
+texture = ExtResource("6_nxx2y")
+
+[node name="HBG3" type="HBoxContainer" parent="VBG" unique_id=1311219612]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="VBG/HBG3" unique_id=698964448]
+custom_minimum_size = Vector2(42, 43)
+custom_maximum_size = Vector2(42, 43)
+layout_mode = 2
+texture = ExtResource("7_n28c8")
+expand_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="VBG/HBG3" unique_id=317939826]
+custom_minimum_size = Vector2(46, 43)
+custom_maximum_size = Vector2(46, 43)
+layout_mode = 2
+texture = ExtResource("8_hxpqm")
+
+[node name="TextureRect3" type="TextureRect" parent="VBG/HBG3" unique_id=1905088794]
+custom_minimum_size = Vector2(42, 43)
+custom_maximum_size = Vector2(42, 43)
+layout_mode = 2
+texture = ExtResource("9_6uh8r")
+
+[node name="VContentSelect" type="VBoxContainer" parent="." unique_id=1007515226]
+custom_minimum_size = Vector2(126, 129)
+custom_maximum_size = Vector2(126, 129)
+layout_mode = 0
+offset_right = 126.0
+offset_bottom = 129.0
+theme_override_constants/separation = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VContentSelect" unique_id=1238629008]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="VContentSelect" unique_id=331425486]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VContentSelect/Row1" unique_id=422567219]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="Col1" type="TextureRect" parent="VContentSelect/Row1" unique_id=412386001]
+visible = false
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_loe3i")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VContentSelect/Row1" unique_id=1200528609]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="VContentSelect" unique_id=1266859311]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VContentSelect/Row2" unique_id=1423443785]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="Col1" type="TextureRect" parent="VContentSelect/Row2" unique_id=1207759777]
+visible = false
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_loe3i")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VContentSelect/Row2" unique_id=169792751]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="VContentSelect" unique_id=15107311]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VContentSelect/Row3" unique_id=1486767272]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="Col1" type="TextureRect" parent="VContentSelect/Row3" unique_id=2137785626]
+visible = false
+modulate = Color(0.5019608, 0.5019608, 0.5019608, 1)
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_loe3i")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="VContentSelect/Row3" unique_id=2038192264]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="VContent" type="VBoxContainer" parent="." unique_id=80475193]
+custom_minimum_size = Vector2(126, 129)
+custom_maximum_size = Vector2(126, 129)
+layout_mode = 0
+offset_right = 230.0
+offset_bottom = 234.0
+theme_override_constants/separation = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="VContent" unique_id=914521621]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="Row1" type="HBoxContainer" parent="VContent" unique_id=915383729]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VContent/Row1" unique_id=1018820762]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="Col1a" type="Label" parent="VContent/Row1" unique_id=1855425963]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col1b" type="TextureRect" parent="VContent/Row1" unique_id=2117590485]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Col2a" type="Label" parent="VContent/Row1" unique_id=1962519380]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col2b" type="TextureRect" parent="VContent/Row1" unique_id=1133355445]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Col3a" type="Label" parent="VContent/Row1" unique_id=1163371275]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col3b" type="TextureRect" parent="VContent/Row1" unique_id=1201662236]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Row2" type="HBoxContainer" parent="VContent" unique_id=267906017]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VContent/Row2" unique_id=1692464323]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="Col1a" type="Label" parent="VContent/Row2" unique_id=159855270]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col1b" type="TextureRect" parent="VContent/Row2" unique_id=239563948]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+
+[node name="Col2a" type="Label" parent="VContent/Row2" unique_id=199890651]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1x"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col2b" type="TextureRect" parent="VContent/Row2" unique_id=906345387]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("10_oqagx")
+
+[node name="Col3a" type="Label" parent="VContent/Row2" unique_id=276921356]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1x"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col3b" type="TextureRect" parent="VContent/Row2" unique_id=1058260811]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("12_hxpqm")
+
+[node name="Row3" type="HBoxContainer" parent="VContent" unique_id=1156403722]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VContent/Row3" unique_id=1457919654]
+custom_minimum_size = Vector2(11, 0)
+layout_mode = 2
+
+[node name="Col1a" type="Label" parent="VContent/Row3" unique_id=689633003]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1x"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col1b" type="TextureRect" parent="VContent/Row3" unique_id=461013446]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("10_oqagx")
+
+[node name="Col2a" type="Label" parent="VContent/Row3" unique_id=1098088]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1x"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col2b" type="TextureRect" parent="VContent/Row3" unique_id=1018218070]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("10_oqagx")
+
+[node name="Col3a" type="Label" parent="VContent/Row3" unique_id=297253975]
+visible = false
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1x"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Col3b" type="TextureRect" parent="VContent/Row3" unique_id=889344509]
+custom_minimum_size = Vector2(32, 32)
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("12_hxpqm")
+
+[connection signal="gui_input" from="VContent/Row1" to="." method="_on_row_1_gui_input"]
+[connection signal="mouse_entered" from="VContent/Row1" to="." method="_on_row_1_mouse_entered"]
+[connection signal="mouse_exited" from="VContent/Row1" to="." method="_on_row_1_mouse_exited"]
+[connection signal="mouse_entered" from="VContent/Row2" to="." method="_on_row_2_mouse_entered"]
+[connection signal="mouse_exited" from="VContent/Row2" to="." method="_on_row_2_mouse_exited"]
+[connection signal="mouse_entered" from="VContent/Row3" to="." method="_on_row_3_mouse_entered"]
+[connection signal="mouse_exited" from="VContent/Row3" to="." method="_on_row_3_mouse_exited"]

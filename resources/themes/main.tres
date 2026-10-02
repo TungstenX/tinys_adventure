@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://33fwqbw6yhph"]
+
+[ext_resource type="FontFile" uid="uid://d00h4ctsh5ohj" path="res://assets/fonts/PirataOne-Regular.ttf" id="1_h8plf"]
+
+[resource]
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.69411767)
+Label/constants/outline_size = 8
+Label/constants/shadow_outline_size = 16
+Label/font_sizes/font_size = 60
+Label/fonts/font = ExtResource("1_h8plf")

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://d20t0q58qvwmi"]
+
+[ext_resource type="Script" uid="uid://c6phiua7s7tcs" path="res://scenes/template/hire_slot.gd" id="1_gy2ii"]
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="2_pqv7y"]
+[ext_resource type="Texture2D" uid="uid://cseyerbdxj3qh" path="res://assets/ui/avatars/Avatars_03.png" id="3_pqv7y"]
+
+[node name="HireSlot" type="Control" unique_id=360038367]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gy2ii")
+
+[node name="BG" type="NinePatchRect" parent="." unique_id=1470675564]
+custom_minimum_size = Vector2(72, 72)
+custom_maximum_size = Vector2(72, 72)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_pqv7y")
+
+[node name="Avatar" type="TextureRect" parent="BG" unique_id=912280768]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 68.0
+offset_bottom = 68.0
+texture = ExtResource("3_pqv7y")
+expand_mode = 3
+
+[connection signal="gui_input" from="BG/Avatar" to="." method="_on_avatar_gui_input"]

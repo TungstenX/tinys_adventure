@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://8sycuytig4ud"]
+
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="1_qnwsn"]
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="2_mnnnl"]
+[ext_resource type="Script" uid="uid://bbeusxosvu1h1" path="res://scenes/template/god_response.gd" id="2_xvu0m"]
+
+[node name="GodResponse" type="Control" unique_id=1343575783]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qnwsn")
+script = ExtResource("2_xvu0m")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2065892221]
+custom_minimum_size = Vector2(235, 100)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mnnnl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="Label" type="Label" parent="." unique_id=374284577]
+custom_minimum_size = Vector2(211, 88)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 221.0
+offset_bottom = 93.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+text = "¯\\_(ツ)_/¯"
+horizontal_alignment = 1
+vertical_alignment = 1

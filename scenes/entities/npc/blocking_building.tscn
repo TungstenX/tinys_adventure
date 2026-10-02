@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://dhbf0m4s83akd"]
+
+[ext_resource type="Script" uid="uid://ckdvav3728v4h" path="res://scenes/entities/npc/blocking_building.gd" id="1_yogei"]
+[ext_resource type="Texture2D" uid="uid://4pcdih0wank0" path="res://assets/environment/buildings/blocking/Tower_Blue.png" id="2_la2gm"]
+[ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="3_318y5"]
+[ext_resource type="PackedScene" uid="uid://clmpujayoeo7c" path="res://scenes/template/speech_bubble.tscn" id="4_la2gm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4a7r"]
+radius = 23.0
+height = 82.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_615lj"]
+radius = 27.0
+height = 88.0
+
+[node name="BlockingBuilding" type="CharacterBody2D" unique_id=1182430148 groups=["npc"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_yogei")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=358997641]
+position = Vector2(0, -97)
+texture = ExtResource("2_la2gm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1426619494]
+position = Vector2(0, -27)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_t4a7r")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=82315391]
+collision_layer = 48
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox" unique_id=1891056459]
+position = Vector2(0, -27)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_615lj")
+
+[node name="HP" type="TextureRect" parent="." unique_id=333178872]
+visible = false
+custom_maximum_size = Vector2(64, 16)
+offset_left = -32.0
+offset_top = -73.0
+offset_right = 32.0
+offset_bottom = -57.0
+texture = ExtResource("3_318y5")
+
+[node name="HPBar" type="TextureProgressBar" parent="HP" unique_id=1753449613]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 194.0
+offset_bottom = 66.0
+scale = Vector2(0.313, 0.188)
+value = 100.0
+texture_progress = ExtResource("3_318y5")
+tint_progress = Color(0.5019608, 1, 0, 1)
+
+[node name="SpeechBubble" parent="." unique_id=1672618215 instance=ExtResource("4_la2gm")]
+unique_name_in_owner = true
+visible = false
+offset_left = 22.0
+offset_top = -85.0
+offset_right = 22.0
+offset_bottom = -85.0
+
+[connection signal="mouse_entered" from="HurtBox" to="." method="_on_hurt_box_mouse_entered_tower"]
+[connection signal="mouse_exited" from="HurtBox" to="." method="_on_hurt_box_mouse_exited_tower"]

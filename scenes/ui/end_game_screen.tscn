@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://0qmg788gcigk"]
+
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="1_ketox"]
+[ext_resource type="Texture2D" uid="uid://dd5chn7mty8ao" path="res://assets/ui/buttons/Button_Blue_3Slides.png" id="2_svl4o"]
+[ext_resource type="Script" uid="uid://dugeq8vgbriu5" path="res://scenes/ui/end_game_screen.gd" id="2_x8rbx"]
+[ext_resource type="Texture2D" uid="uid://t6ugsh3rd7ag" path="res://assets/ui/buttons/Button_Blue_3Slides_Pressed.png" id="3_x8rbx"]
+[ext_resource type="Texture2D" uid="uid://crpe6wlm1i2bo" path="res://assets/ui/buttons/Button_Hover_3Slides.png" id="4_grgci"]
+
+[node name="EndGameScreen" type="Control" unique_id=1718127261]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ketox")
+script = ExtResource("2_x8rbx")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=175607657]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.49803922)
+
+[node name="V" type="VBoxContainer" parent="." unique_id=1213440421]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Result" type="Label" parent="V" unique_id=1978787484]
+layout_mode = 2
+theme_override_font_sizes/font_size = 164
+text = "ui.game_over"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="V" unique_id=1076409741]
+layout_mode = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Replay" type="TextureButton" parent="V/Buttons" unique_id=1832208283]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_svl4o")
+texture_pressed = ExtResource("3_x8rbx")
+texture_hover = ExtResource("4_grgci")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="V/Buttons/Replay" unique_id=1348530579]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_ketox")
+text = "ui.replay"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="TextureButton" parent="V/Buttons" unique_id=189846069]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("2_svl4o")
+texture_pressed = ExtResource("3_x8rbx")
+texture_hover = ExtResource("4_grgci")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="V/Buttons/MainMenu" unique_id=1191899222]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_ketox")
+text = "ui.main_menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="V/Buttons/Replay" to="." method="_on_replay_pressed"]
+[connection signal="pressed" from="V/Buttons/MainMenu" to="." method="_on_main_menu_pressed"]

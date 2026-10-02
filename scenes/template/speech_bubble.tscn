@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://clmpujayoeo7c"]
+
+[ext_resource type="Script" uid="uid://jcostroxsa5s" path="res://scenes/template/speech_bubble.gd" id="1_85763"]
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="2_na6nn"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="3_na6nn"]
+[ext_resource type="Texture2D" uid="uid://crwlphqv4ceun" path="res://assets/ui/elements/icons/Icon_04.png" id="4_2fpq6"]
+[ext_resource type="Texture2D" uid="uid://b76x5s8mmwjdf" path="res://assets/ui/elements/icons/Icon_05.png" id="5_guvop"]
+[ext_resource type="Texture2D" uid="uid://etalrpvtabs8" path="res://assets/ui/elements/icons/Icon_06.png" id="6_s61bj"]
+
+[node name="SpeechBubble" type="Control" unique_id=1672618215]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("3_na6nn")
+script = ExtResource("1_85763")
+
+[node name="BG" type="NinePatchRect" parent="." unique_id=2042386288]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 0
+offset_right = 83.0
+offset_bottom = 40.0
+texture = ExtResource("2_na6nn")
+
+[node name="V" type="VBoxContainer" parent="BG" unique_id=1727375793]
+layout_mode = 0
+offset_right = 83.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="HP" type="HBoxContainer" parent="BG/V" unique_id=1608242792]
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BG/V/HP" unique_id=1947523001]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_na6nn")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="BG/V/HP" unique_id=1653170151]
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("4_2fpq6")
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/V/HP" unique_id=700803727]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+
+[node name="ATK" type="HBoxContainer" parent="BG/V" unique_id=1740338114]
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BG/V/ATK" unique_id=116592676]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_na6nn")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="BG/V/ATK" unique_id=853397513]
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("5_guvop")
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/V/ATK" unique_id=1122309655]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+
+[node name="DEF" type="HBoxContainer" parent="BG/V" unique_id=1947361292]
+propagate_maximum_size = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="BG/V/DEF" unique_id=742961918]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_na6nn")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+
+[node name="Icon" type="TextureRect" parent="BG/V/DEF" unique_id=752552410]
+custom_maximum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("6_s61bj")
+
+[node name="MarginContainer" type="MarginContainer" parent="BG/V/DEF" unique_id=1722973519]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2

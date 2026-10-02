@@ -1,0 +1,201 @@
+[gd_scene format=3 uid="uid://eusioxwxuefk"]
+
+[ext_resource type="Texture2D" uid="uid://dd5chn7mty8ao" path="res://assets/ui/buttons/Button_Blue_3Slides.png" id="1_1g8jr"]
+[ext_resource type="Script" uid="uid://ctp0u56e1dh1i" path="res://scenes/ui/main_menu.gd" id="1_x2yvf"]
+[ext_resource type="Texture2D" uid="uid://t6ugsh3rd7ag" path="res://assets/ui/buttons/Button_Blue_3Slides_Pressed.png" id="2_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://cw0yrijb8yh3t" path="res://assets/ui/elements/Banner_Horizontal_BG.png" id="2_uhagc"]
+[ext_resource type="Texture2D" uid="uid://crpe6wlm1i2bo" path="res://assets/ui/buttons/Button_Hover_3Slides.png" id="3_x2yvf"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="4_m1kxf"]
+
+[node name="MainMenu" type="Control" unique_id=1678171781]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2yvf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1187755510]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_uhagc")
+patch_margin_left = 36
+patch_margin_top = 36
+patch_margin_right = 36
+patch_margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1458586421]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -486.0
+offset_right = 452.0
+offset_bottom = 486.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="NewGame" type="TextureButton" parent="VBoxContainer" unique_id=806661626]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_1g8jr")
+texture_pressed = ExtResource("2_m1kxf")
+texture_hover = ExtResource("3_x2yvf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/NewGame" unique_id=445749340]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_m1kxf")
+text = "ui.new_game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="H" type="HBoxContainer" parent="VBoxContainer" unique_id=597687251]
+layout_mode = 2
+alignment = 1
+
+[node name="LoadGame" type="TextureButton" parent="VBoxContainer/H" unique_id=570759066]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_1g8jr")
+texture_pressed = ExtResource("2_m1kxf")
+texture_hover = ExtResource("3_x2yvf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/H/LoadGame" unique_id=890080789]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_m1kxf")
+text = "ui.load_game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SaveGame" type="TextureButton" parent="VBoxContainer/H" unique_id=56781510]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_1g8jr")
+texture_pressed = ExtResource("2_m1kxf")
+texture_hover = ExtResource("3_x2yvf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/H/SaveGame" unique_id=67999170]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_m1kxf")
+text = "ui.save_game"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="VBoxContainer" unique_id=1107494952]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_1g8jr")
+texture_pressed = ExtResource("2_m1kxf")
+texture_hover = ExtResource("3_x2yvf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Settings" unique_id=1849019822]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_m1kxf")
+text = "ui.settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="About" type="TextureButton" parent="VBoxContainer" unique_id=497399738]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_1g8jr")
+texture_pressed = ExtResource("2_m1kxf")
+texture_hover = ExtResource("3_x2yvf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/About" unique_id=1473719526]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_m1kxf")
+text = "ui.about"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Margin" type="Control" parent="VBoxContainer" unique_id=1994846409]
+custom_minimum_size = Vector2(0, 50)
+custom_maximum_size = Vector2(-1, 50)
+layout_mode = 2
+
+[node name="Exit" type="TextureButton" parent="VBoxContainer" unique_id=375464684]
+custom_minimum_size = Vector2(450, 150)
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("1_1g8jr")
+texture_pressed = ExtResource("2_m1kxf")
+texture_hover = ExtResource("3_x2yvf")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VBoxContainer/Exit" unique_id=1889006897]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("4_m1kxf")
+text = "ui.exit"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="resized" from="." to="." method="_on_resized"]
+[connection signal="button_down" from="VBoxContainer/NewGame" to="." method="_on_new_game_button_down"]
+[connection signal="button_up" from="VBoxContainer/NewGame" to="." method="_on_new_game_button_up"]
+[connection signal="pressed" from="VBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="button_down" from="VBoxContainer/H/LoadGame" to="." method="_on_load_game_button_down"]
+[connection signal="button_up" from="VBoxContainer/H/LoadGame" to="." method="_on_load_game_button_up"]
+[connection signal="pressed" from="VBoxContainer/H/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="button_down" from="VBoxContainer/H/SaveGame" to="." method="_on_save_game_button_down"]
+[connection signal="button_up" from="VBoxContainer/H/SaveGame" to="." method="_on_save_game_button_up"]
+[connection signal="pressed" from="VBoxContainer/H/SaveGame" to="." method="_on_save_game_pressed"]
+[connection signal="button_down" from="VBoxContainer/Settings" to="." method="_on_settings_button_down"]
+[connection signal="button_up" from="VBoxContainer/Settings" to="." method="_on_settings_button_up"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="button_down" from="VBoxContainer/About" to="." method="_on_about_button_down"]
+[connection signal="button_up" from="VBoxContainer/About" to="." method="_on_about_button_up"]
+[connection signal="pressed" from="VBoxContainer/About" to="." method="_on_about_pressed"]
+[connection signal="button_down" from="VBoxContainer/Exit" to="." method="_on_exit_button_down"]
+[connection signal="button_up" from="VBoxContainer/Exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]

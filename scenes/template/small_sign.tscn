@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bddtk27cnju0v"]
+
+[ext_resource type="Script" uid="uid://cbq6mww3v86us" path="res://scenes/template/small_sign.gd" id="1_mx1u5"]
+[ext_resource type="Texture2D" uid="uid://dwrg48pvrb77c" path="res://assets/environment/props/small_sign_bg.png" id="1_nanql"]
+[ext_resource type="Texture2D" uid="uid://y1wj4k2eku4c" path="res://assets/environment/props/02.png" id="2_mx1u5"]
+
+[node name="SmallSign" type="Node2D" unique_id=943491670]
+script = ExtResource("1_mx1u5")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=795174091]
+texture = ExtResource("1_nanql")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1076424666]
+texture = ExtResource("2_mx1u5")

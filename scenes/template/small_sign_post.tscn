@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bvtrq3p27umgn"]
+
+[ext_resource type="Texture2D" uid="uid://djjoryykhtq88" path="res://assets/environment/props/small_sign_plus_pole.png" id="1_7jif7"]
+[ext_resource type="Script" uid="uid://dcxdm5bfsqlq3" path="res://scenes/template/small_sign_post.gd" id="1_o22gt"]
+[ext_resource type="Texture2D" uid="uid://bi3cw026ydjxc" path="res://assets/ui/elements/numbers_sheet.png" id="2_o22gt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_615lj"]
+size = Vector2(37, 10)
+
+[node name="SmallSignPost" type="Node2D" unique_id=1745021569]
+script = ExtResource("1_o22gt")
+
+[node name="Post" type="Sprite2D" parent="." unique_id=546746564]
+position = Vector2(0, -36)
+texture = ExtResource("1_7jif7")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1637828212]
+position = Vector2(0, -44)
+texture = ExtResource("2_o22gt")
+hframes = 4
+vframes = 4
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1815753593]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1447775210]
+position = Vector2(0.5, -5)
+shape = SubResource("RectangleShape2D_615lj")
