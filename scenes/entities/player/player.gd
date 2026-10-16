@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 		update_ui_elements()
 
 
+#TODO: Move to game_scene
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("action"):
 		var resource_props = get_tree().get_nodes_in_group("resource_props")
@@ -134,7 +135,8 @@ func attack(double_hit: bool) -> void:
 	state = State.IDLE
 
 
-func take_damage(damage_taken: int) -> void:
+#TODO: Defence + Armour
+func take_damage(damage_taken: int, _damage_type: Array) -> void:
 	fx_take_damage()
 	PlayerData.dec_current_hp(damage_taken)
 	update_ui_elements()
@@ -186,35 +188,14 @@ func death() -> void:
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	area.owner.take_damage(PlayerData.get_current_attack())
+	area.owner.take_damage(PlayerData.get_current_attack(), ["SHARP"])
 
 
+#┌───────────┐
+#│ NPC Stuff │
+#└───────────┘
 func select_npc(_npc: CharacterBody2D) -> void:
 	current_selected_npc = _npc
-
-
-## Call this one not the PlayerData one!
-func add_to_inventory(_amount: int, _type: GameData.InventoryType) -> void:
-	var new_amount = PlayerData.add_to_inventory(_amount, _type)
-	if new_amount > 0:
-		for slot in get_node("../../UI/HUD/Inventory").get_children():
-			if slot.type == _type:
-				slot.add(new_amount)
-
-
-## Call this one not the PlayerData one!
-func remove_from_inventory(_amount: int, _type: GameData.InventoryType) -> void:
-	var new_amount = PlayerData.remove_from_inventory(_amount, _type)
-	if new_amount > 0:
-		for slot in get_node("../../UI/HUD/Inventory").get_children():
-			if slot.type == _type:
-				slot.remove(new_amount)
-
-
-## Call this one not the PlayerData one!
-func get_inventory_amount(_type: GameData.InventoryType) -> int:
-	return PlayerData.get_inventory_amount(_type)
-
 
 #TODO: Add to PlayerData?
 func add_selected_npc(which: Node2D, face_icon: Texture2D) -> void:
@@ -233,6 +214,45 @@ func select_target(_target: CharacterBody2D) -> void:
 		which.target = _target
 
 
+#┌───────────┐
+#│ Inventory │
+#└───────────┘
+## Call this one not the PlayerData one!
+func add_to_inventory(_amount: int, _template_id: String) -> void:
+	if _template_id == "COIN":
+		PlayerData.add_coins(_amount)
+	else:
+		var amount = _amount
+		while amount > 0:
+			var result = PlayerData.add_to_inventory(_template_id)
+			if result < 1:
+				break
+			amount -= 1
+	GameData.inventory_changed.emit()
+
+
+## Call this one not the PlayerData one!
+func remove_from_inventory(_amount: int, _template_id: String) -> void:
+	if _template_id == "COIN":
+		PlayerData.remove_coins(_amount)
+		#hud.update_hud_coins()
+	else:
+		var _new_amount = PlayerData.remove_from_inventory(_amount, _template_id)
+		#hud.update_hud_inventory()
+	GameData.inventory_changed.emit()
+
+
+## Call this one not the PlayerData one!
+func get_inventory_amount(_template_id: String) -> int:
+	if _template_id == "COIN":
+		return PlayerData.get_coins()
+	else:
+		return PlayerData.get_inventory_amount(_template_id)
+
+
+#┌───────────────┐
+#│ Derived Stats │
+#└───────────────┘
 func increase_derived(which: String, amount: int) -> void:
 	var result: float = 0
 	match which:
@@ -254,7 +274,7 @@ func increase_derived(which: String, amount: int) -> void:
 		"spd":
 			result = PlayerData.inc_current_speed(amount)
 
-	for slot in get_node("../../UI/HUD/Stats").get_children():
+	for slot in hud.get_node("Stats").get_children():
 		if slot.to_lower() == which:
 			slot.set_amount(result)
 			break # out of loop
@@ -271,7 +291,7 @@ func set_declutter(_declutter) -> void:
 		zoom_timer.wait_time = zoom_increment
 		zoom_timer.timeout.connect(zoom_timeout)
 		zoom_timer.start()
-	get_tree().get_first_node_in_group("hud").set_declutter(_declutter)
+	hud.set_declutter(_declutter)
 
 
 func zoom_timeout() -> void:
@@ -294,7 +314,7 @@ func zoom_timeout() -> void:
 func stupid() -> void:
 	if stupid_timer == null:
 		get_node("Stupid").set_visible(true)
-		get_node("../../UI/HUD/FKeys").set_visible(true)
+		hud.get_node("FKeys").set_visible(true)
 		stupid_count += 1
 		stupid_timer = Timer.new()
 		add_child(stupid_timer)
@@ -304,7 +324,7 @@ func stupid() -> void:
 
 
 func stupid_timeout() -> void:	
-	get_node("../../UI/HUD/FKeys").set_visible(false)
+	hud.get_node("FKeys").set_visible(false)
 	get_node("Stupid/Sprite2D").frame = 11
 	if stupid_count == 3:
 		var explosion_packed: PackedScene = load("res://scenes/entities/npc/mobs/explosion.tscn")
@@ -317,18 +337,17 @@ func stupid_timeout() -> void:
 	if stupid_timer != null:
 		if stupid_level == 0:
 			get_node("Stupid").set_visible(false)
-			get_node("../../UI/HUD/GodResponse").set_visible(true)
+			hud.get_node("GodResponse").set_visible(true)
 			stupid_level += 1
 		elif stupid_level == 1:
-			get_node("../../UI/HUD/GodResponse").set_visible(false)
-			get_node("../../UI/HUD/GodResponse/Label").set_text("(*¬_¬)")
-			get_node("../../UI/HUD/DevilResponse").set_visible(true)
+			hud.get_node("GodResponse").set_visible(false)
+			hud.get_node("GodResponse/Label").set_text("(*¬_¬)")
+			hud.get_node("DevilResponse").set_visible(true)
 			stupid_level += 1
 		elif stupid_level == 2:
-			get_node("../../UI/HUD/DevilResponse").set_visible(false)
-			get_node("../../UI/HUD/DevilResponse/Label").set_text("(*¬_¬)")
+			hud.get_node("DevilResponse").set_visible(false)
+			hud.get_node("DevilResponse/Label").set_text("(*¬_¬)")
 			stupid_timer.stop()
 			remove_child(stupid_timer)
 			stupid_timer.queue_free()
 			stupid_level = 0
-		

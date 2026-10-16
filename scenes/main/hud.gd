@@ -14,37 +14,48 @@ func _ready() -> void:
 	update_level_indicator()
 	start_fx_f_keys_timer()
 	update_stats()
+	update_hud_inventory()
+	GameData.inventory_changed.connect(update_hud_inventory)
 
 
 func _on_viewport_resize() -> void:
 	var factor_1 = 1.0
 	var factor_2 = 1.0
-	if not declutter:
-		factor_1 = 0.75
-		factor_2 = 0.5
-	get_node("InventoryPanel").position.x = (get_viewport().size.x * factor_1) - (get_node("InventoryPanel").size.x * factor_2)
-	get_node("InventoryPanel").size.y = get_viewport().size.y / 2.0 - (get_node("InventoryPanel").size.x) # 50%
-	get_node("InventoryPanel").position.y = get_viewport().size.y / 4.0 + (get_node("InventoryPanel").size.x / 2.0)# 25%
-	get_node("Inventory").position = get_node("InventoryPanel").position
-	get_node("Inventory").size.y = get_node("InventoryPanel").size.y 
-	
-	
-	get_node("StatsPanel").position.y = (get_viewport().size.y * factor_1) - (get_node("StatsPanel").size.y * factor_2)
-	get_node("StatsPanel").size.x = get_viewport().size.x / 2.0 - (get_node("StatsPanel").size.y) # 50%
-	get_node("StatsPanel").position.x = get_viewport().size.x / 4.0 + (get_node("StatsPanel").size.y / 2.0)# 25%
+	#if not declutter:
+		#factor_1 = 0.75
+		#factor_2 = 0.5
+	get_node("StatsPanel").position.x = (get_viewport().size.x * factor_1) - (get_node("StatsPanel").size.x * factor_2)
+	get_node("StatsPanel").size.y = get_viewport().size.y / 2.0 - (get_node("StatsPanel").size.x) # 50%
+	get_node("StatsPanel").position.y = get_viewport().size.y / 4.0 + (get_node("StatsPanel").size.x / 2.0)# 25%
 	get_node("Stats").position = get_node("StatsPanel").position
-	get_node("Stats").size.x = get_node("StatsPanel").size.x
+	get_node("Stats").size.y = get_node("StatsPanel").size.y 
 	
-	get_node("HirePanel").position.x = (get_viewport().size.x * (1 - factor_1)) - (get_node("HirePanel").size.x * (1 - factor_2))
-	get_node("HirePanel").size.y = get_viewport().size.y / 2.0 - (get_node("HirePanel").size.x) # 50%
-	get_node("HirePanel").position.y = get_viewport().size.y / 4.0 + (get_node("HirePanel").size.x / 2.0)# 25%
+	get_node("InventoryPanel").position.y = (get_viewport().size.y * factor_1) - (get_node("InventoryPanel").size.y * factor_2)
+	get_node("InventoryPanel").size.x = get_viewport().size.x / 2.0 - (get_node("InventoryPanel").size.y) # 50%
+	get_node("InventoryPanel").position.x = get_viewport().size.x / 4.0 + (get_node("InventoryPanel").size.y / 2.0)# 25%
+	get_node("Inventory").position = get_node("InventoryPanel").position
+	get_node("Inventory").size.x = get_node("InventoryPanel").size.x
+	
+	#get_node("StatsPanel").position.y = (get_viewport().size.y * factor_1) - (get_node("StatsPanel").size.y * factor_2)
+	#get_node("StatsPanel").size.x = get_viewport().size.x / 2.0 - (get_node("StatsPanel").size.y) # 50%
+	#get_node("StatsPanel").position.x = get_viewport().size.x / 4.0 + (get_node("StatsPanel").size.y / 2.0)# 25%
+	#get_node("Stats").position = get_node("StatsPanel").position
+	#get_node("Stats").size.x = get_node("StatsPanel").size.x
+	
+	get_node("HirePanel").position.x = 0#(get_viewport().size.x * (1 - factor_1)) - (get_node("HirePanel").size.x * (1 - factor_2))
+	get_node("HirePanel").size.y = get_viewport().size.y / 2.0 # 50%
+	get_node("HirePanel").position.y = get_viewport().size.y / 4.0 #+ (get_node("HirePanel").size.x / 2.0)# 25%
 	get_node("Hire").position = get_node("HirePanel").position
 	get_node("Hire").size.y = get_node("HirePanel").size.y 
-	#print("Viewport size: ", get_viewport().size)
+	
+	#print("HirePanel: Position.y = ", get_node("HirePanel").position.y)
+	#print("HirePanel: Size.y = ", get_node("HirePanel").size.y)
+	
+	get_node("Book").position = (get_viewport().size / 2.0) - (get_node("Book").size / 2.0)
+	get_node("Gold").position.x = (get_viewport().size.x) - (get_node("Gold").size.x)
+	get_node("Gold").position.y = 0
 	
 	get_node("DevilResponse").position.y = get_viewport().size.y - get_node("DevilResponse").size.y
-	
-
 
 
 func  set_declutter(_declutter: bool) -> void:
@@ -66,7 +77,6 @@ func start_fx_f_keys_timer() -> void:
 	if fx_f_keys_timer == null:
 		fx_f_keys_timer = Timer.new()
 		add_child(fx_f_keys_timer)
-		#fx_f_keys_timer.autostart = true
 		fx_f_keys_timer.wait_time = 3
 		fx_f_keys_timer.timeout.connect(fx_f_keys_timeout)
 		fx_f_keys_timer.start()
@@ -91,7 +101,7 @@ func fx_level_timeout() -> void:
 func update_hp_bar(new_value: int) -> void:
 	%HitpointsBar.value = new_value
 	if %HitpointsBar.value <= 25:
-		%HitpointsBar.set("tint_progress", Color("970000ff"))
+		%HitpointsBar.set("tint_progress", Color("970000"))
 	elif %HitpointsBar.value <= 50:
 		%HitpointsBar.set("tint_progress", Color("ff8000"))
 	else:
@@ -132,5 +142,32 @@ func get_selected_npc() -> Variant:
 func update_stats() -> void:
 	for stat in get_node("Stats").get_children():
 		var stat_name = stat.get_name()
+		if stat_name == "UISlotMoreButton":
+			continue
 		var amount = PlayerData.get_derived_stat(stat_name.to_lower())
 		stat.set_amount(amount)
+
+
+func toggle_book(page_name: String) -> void:
+	var book = get_node("Book")
+	book.set_page(page_name)
+	book.toggle_visible()
+
+
+func update_hud_coins() -> void:
+	get_node("Gold").set_amount(PlayerData.get_coins())
+
+
+func update_hud_inventory() -> void:
+	update_hud_coins()
+	for i in 6:
+		var index = i + 1
+		var slot_item = PlayerData.get_inventory_item(index)
+		if slot_item == null:
+			get_node("Inventory").get_node("InventorySlot" + str(index)).set_amount(0)
+			get_node("Inventory").get_node("InventorySlot" + str(index)).set_icon(null)
+		else:
+			get_node("Inventory").get_node("InventorySlot" + str(index)).set_amount(slot_item.get("instance_ids").size())
+			var template = GameData.get_item_template(slot_item.get("template_id"))
+			var icon = load("res://assets/ui/elements/inventory/icon_" + template.get("ICON") + ".png")
+			get_node("Inventory").get_node("InventorySlot" + str(index)).set_icon(icon)

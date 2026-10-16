@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bn65vm4tbne50"]
+
+[ext_resource type="Theme" uid="uid://c27j3de0thiqm" path="res://resources/themes/medium.tres" id="1_v1ixb"]
+[ext_resource type="Script" uid="uid://c27m6kvx6geo7" path="res://scenes/template/ui_slot_more_button.gd" id="2_g1mix"]
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="3_m1fti"]
+[ext_resource type="Texture2D" uid="uid://bmehgxk6oltm7" path="res://assets/ui/icons/book_icon.png" id="4_aflxv"]
+
+[node name="UISlotMoreButton" type="Control" unique_id=1405290813]
+custom_minimum_size = Vector2(72, 64)
+custom_maximum_size = Vector2(88, 64)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1848.0
+offset_bottom = -1016.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("1_v1ixb")
+script = ExtResource("2_g1mix")
+
+[node name="N" type="NinePatchRect" parent="." unique_id=325693357]
+custom_minimum_size = Vector2(72, 64)
+custom_maximum_size = Vector2(88, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_m1fti")
+
+[node name="TB" type="TextureButton" parent="N" unique_id=831682680]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_aflxv")
+
+[node name="Key" type="Label" parent="N" unique_id=833482498]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -43.0
+offset_right = 21.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="N/TB" to="." method="_on_tb_pressed"]

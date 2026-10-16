@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://d1i184imiyt33"]
+
+[ext_resource type="Script" uid="uid://ckcmkhdlc14du" path="res://scenes/ui/book.gd" id="1_qwe86"]
+[ext_resource type="Texture2D" uid="uid://22xim62334qx" path="res://assets/ui/art/book_open.png" id="1_xtfmm"]
+[ext_resource type="PackedScene" uid="uid://dov78vfpw1j61" path="res://scenes/ui/inventory_ui.tscn" id="2_qwe86"]
+[ext_resource type="PackedScene" uid="uid://c8krw8305nrrt" path="res://scenes/ui/book_page_index_ui.tscn" id="3_mcyij"]
+[ext_resource type="PackedScene" uid="uid://bfn1bihks7j58" path="res://scenes/ui/book_page_blank_ui.tscn" id="4_6cp7k"]
+[ext_resource type="Texture2D" uid="uid://deelx53kxxgki" path="res://assets/ui/avatars/Avatars_01.png" id="4_7x4fl"]
+[ext_resource type="PackedScene" uid="uid://cnaesessjto1j" path="res://scenes/ui/book_page_index2_ui.tscn" id="4_c684v"]
+[ext_resource type="Texture2D" uid="uid://de3wf3eiu3emc" path="res://assets/ui/icons/Regular_01.png" id="5_ky6bx"]
+[ext_resource type="PackedScene" uid="uid://c0erpvqe2mup8" path="res://scenes/ui/book_page_equipment_ui.tscn" id="6_6cp7k"]
+[ext_resource type="Texture2D" uid="uid://bswaxbcvqdw6i" path="res://assets/ui/icons/Pressed_01.png" id="6_kr360"]
+[ext_resource type="PackedScene" uid="uid://c6rmigxcb1hyu" path="res://scenes/ui/book_page_trophies_ui.tscn" id="8_0u21c"]
+
+[node name="Book" type="Control" unique_id=1646552966 groups=["book"]]
+custom_minimum_size = Vector2(1016, 664)
+custom_maximum_size = Vector2(1016, 664)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qwe86")
+
+[node name="BG" type="NinePatchRect" parent="." unique_id=168669937]
+custom_minimum_size = Vector2(1016, 664)
+custom_maximum_size = Vector2(1016, 664)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_xtfmm")
+
+[node name="Sides" type="HBoxContainer" parent="." unique_id=2109749692]
+custom_minimum_size = Vector2(952, 600)
+custom_maximum_size = Vector2(952, 600)
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 508.0
+offset_bottom = 632.0
+theme_override_constants/separation = 0
+
+[node name="BookPageIndex" parent="Sides" unique_id=1254877519 instance=ExtResource("3_mcyij")]
+layout_mode = 2
+
+[node name="BookPageIndex2" parent="Sides" unique_id=787215333 instance=ExtResource("4_c684v")]
+layout_mode = 2
+
+[node name="BookPageBlank" parent="Sides" unique_id=1260275551 instance=ExtResource("4_6cp7k")]
+visible = false
+layout_mode = 2
+
+[node name="BookPageBlank2" parent="Sides" unique_id=2057294932 instance=ExtResource("4_6cp7k")]
+visible = false
+layout_mode = 2
+
+[node name="InventoryOther" parent="Sides" unique_id=130957644 instance=ExtResource("2_qwe86")]
+visible = false
+layout_mode = 2
+fixed_first_6 = false
+disabled_up_button = false
+disabled_down_button = false
+
+[node name="BookPageEquipment" parent="Sides" unique_id=1223897770 instance=ExtResource("6_6cp7k")]
+visible = false
+layout_mode = 2
+
+[node name="InventoryPlayer" parent="Sides" unique_id=422054762 instance=ExtResource("2_qwe86")]
+visible = false
+layout_mode = 2
+icon = ExtResource("4_7x4fl")
+title = "ui.inventory.title.you"
+
+[node name="BookPageTrophies1" parent="Sides" unique_id=1763449805 instance=ExtResource("8_0u21c")]
+visible = false
+layout_mode = 2
+title = "ui.trophies.title.you"
+
+[node name="BookPageTrophies2" parent="Sides" unique_id=459122510 instance=ExtResource("8_0u21c")]
+visible = false
+layout_mode = 2
+enemy_trophy_game = false
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=853419462]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 96.0
+grow_horizontal = 0
+texture_normal = ExtResource("5_ky6bx")
+texture_pressed = ExtResource("6_kr360")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

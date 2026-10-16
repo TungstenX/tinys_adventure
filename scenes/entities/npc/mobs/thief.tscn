@@ -274,6 +274,9 @@ height = 64.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c8ylr"]
 size = Vector2(10, 22)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t4a7r"]
+radius = 43.0
+
 [node name="Thief2" type="CharacterBody2D" unique_id=1756380663 groups=["enemies"]]
 collision_layer = 2
 collision_mask = 2
@@ -363,8 +366,17 @@ value = 100.0
 texture_progress = ExtResource("5_eky7j")
 tint_progress = Color(0.5019608, 1, 0, 1)
 
+[node name="InteractionBox" type="Area2D" parent="." unique_id=51653451]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox" unique_id=1063861982]
+position = Vector2(0, -40)
+shape = SubResource("CircleShape2D_t4a7r")
+
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="input_event" from="Hurtbox" to="." method="_on_hurtbox_input_event"]
 [connection signal="mouse_entered" from="Hurtbox" to="." method="_on_hurtbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hurtbox" to="." method="_on_hurtbox_mouse_exited"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="input_event" from="InteractionBox" to="." method="_on_interaction_box_input_event"]
+[connection signal="mouse_entered" from="InteractionBox" to="." method="_on_interaction_box_mouse_entered"]
+[connection signal="mouse_exited" from="InteractionBox" to="." method="_on_interaction_box_mouse_exited"]

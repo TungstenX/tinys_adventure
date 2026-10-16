@@ -1,0 +1,103 @@
+{
+	"MUSHROOM": {
+		"CATEGORY": "CONSUMABLE",
+		"DESCRIPTION": "ui.mushroom.description",
+		"ECONOMY": {
+			"BUY_PRICE": 2,
+			"SELL_PRICE": 1
+		},
+		"EQUIPMENT": null,
+		"FACTOR": null,
+		"GAMEPLAY": {
+			"EQUIPABLE": false
+		},
+		"ICON": "mushroom",
+		"ID": "MUSHROOM",
+		"INVENTORY": {
+			"CURRENCY_TYPE": "COIN",
+			"MAX_STACK_SIZE": 20,
+			"QUANTITY": 1,
+			"STACKABLE": true,
+			"VALUE": 1,
+			"VOLUME": 1,
+			"WEIGHT": 1
+		},
+		"NAME": "ui.mushroom.name",
+		"RARITY": "COMMON",
+		"SUBTYPE": null,
+		"TYPE": "FOOD"
+	},
+	"STANDARD_SWORD": {
+		"CATEGORY": "WEAPON",
+		"DESCRIPTION": "ui.standard_sword.description",
+		"ECONOMY": {
+			"BUY_PRICE": 20,
+			"SELL_PRICE": 10
+		},
+		"EQUIPMENT": {
+			"SLOT": "MAINHAND",
+			"DAMAGE": 20,
+			"DAMAGE_TYPE": "SLASH",
+			"ATTACK_SPEED": 1,
+			"RANGE": 0,
+			"ARMOR": 0,
+			"DEFENCE": 0
+  		},
+		"FACTOR": null,
+		"GAMEPLAY": {
+			"EQUIPABLE": true
+		},
+		"ICON": "standard_sword",
+		"ID": "STANDARD_SWORD",
+		"INVENTORY": {
+			"CURRENCY_TYPE": "COIN",
+			"MAX_STACK_SIZE": 1,
+			"QUANTITY": 1,
+			"STACKABLE": false,
+			"VALUE": 10,
+			"VOLUME": 10,
+			"WEIGHT": 10
+		},
+		"NAME": "ui.standard_sword.name",
+		"RARITY": "COMMON",
+		"SUBTYPE": null,
+		"TYPE": "WEAPON"
+	},
+		"POISON_SWORD": {
+		"CATEGORY": "WEAPON",
+		"DESCRIPTION": "ui.poison_sword.description",
+		"ECONOMY": {
+			"BUY_PRICE": 20,
+			"SELL_PRICE": 10
+		},
+		"EQUIPMENT": {
+			"SLOT": "MAINHAND",
+			"DAMAGE": 21,
+			"DAMAGE_TYPE": "SLASH",
+			"ATTACK_SPEED": 1,
+			"RANGE": 0,
+			"ARMOR": 0,
+			"DEFENCE": 0
+  		},
+		"FACTOR": null,
+		"GAMEPLAY": {
+			"EQUIPABLE": true
+		},
+		"ICON": "poison_sword",
+		"ID": "POISON_SWORD",
+		"INVENTORY": {
+			"CURRENCY_TYPE": "COIN",
+			"MAX_STACK_SIZE": 1,
+			"QUANTITY": 1,
+			"STACKABLE": false,
+			"VALUE": 10,
+			"VOLUME": 10,
+			"WEIGHT": 10
+		},
+		"NAME": "ui.poison_sword.name",
+		"RARITY": "COMMON",
+		"SUBTYPE": null,
+		"TYPE": "WEAPON"
+	},
+	"_ver": "0.0.0"
+}

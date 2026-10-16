@@ -1,0 +1,248 @@
+[gd_scene format=3 uid="uid://cnaesessjto1j"]
+
+[ext_resource type="Script" uid="uid://dneolk18rk057" path="res://scenes/ui/book_page_index_ui.gd" id="1_6masf"]
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="2_hifln"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="4_epik0"]
+[ext_resource type="Texture2D" uid="uid://bcs7340rfjifr" path="res://assets/ui/buttons/Button_Blue.png" id="5_v6hc5"]
+[ext_resource type="Texture2D" uid="uid://7rg0asrj2qsp" path="res://assets/ui/buttons/Button_Blue_Pressed.png" id="6_605li"]
+[ext_resource type="Texture2D" uid="uid://c4mqaqfqhi0tx" path="res://assets/ui/buttons/Button_Disable.png" id="7_2g40d"]
+
+[node name="BookPageIndex2" type="Control" unique_id=1254877519]
+custom_minimum_size = Vector2(476, 600)
+custom_maximum_size = Vector2(476, 600)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1444.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6masf")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=299057775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_hifln")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VMain" type="VBoxContainer" parent="." unique_id=502892972]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 444.0
+offset_bottom = 568.0
+
+[node name="S" type="ScrollContainer" parent="VMain" unique_id=1003413791]
+custom_minimum_size = Vector2(412, 540)
+custom_maximum_size = Vector2(412, 540)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="V" type="VBoxContainer" parent="VMain/S" unique_id=899505171]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_epik0")
+
+[node name="trophies" type="HBoxContainer" parent="VMain/S/V" unique_id=664090286]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VMain/S/V/trophies" unique_id=571668393]
+layout_mode = 2
+
+[node name="TextButton" type="TextureButton" parent="VMain/S/V/trophies" unique_id=1928019366]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VMain/S/V/trophies/TextButton" unique_id=1317650831]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 357.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "ui.index.page.trophies"
+
+[node name="KeyButton" type="TextureButton" parent="VMain/S/V/trophies" unique_id=165765662]
+custom_minimum_size = Vector2(27, 96)
+layout_mode = 2
+texture_normal = ExtResource("5_v6hc5")
+texture_pressed = ExtResource("6_605li")
+texture_disabled = ExtResource("7_2g40d")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VMain/S/V/trophies/KeyButton" unique_id=1088336550]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -48.0
+offset_right = 13.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VMain/S/V/trophies" unique_id=420352727]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="recipes" type="HBoxContainer" parent="VMain/S/V" unique_id=552077519]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VMain/S/V/recipes" unique_id=312597479]
+layout_mode = 2
+
+[node name="TextButton" type="TextureButton" parent="VMain/S/V/recipes" unique_id=887768962]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VMain/S/V/recipes/TextButton" unique_id=1040393308]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 357.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "ui.index.page.recipes"
+
+[node name="KeyButton" type="TextureButton" parent="VMain/S/V/recipes" unique_id=2127757648]
+custom_minimum_size = Vector2(27, 96)
+layout_mode = 2
+texture_normal = ExtResource("5_v6hc5")
+texture_pressed = ExtResource("6_605li")
+texture_disabled = ExtResource("7_2g40d")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VMain/S/V/recipes/KeyButton" unique_id=542711857]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -48.0
+offset_right = 13.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VMain/S/V/recipes" unique_id=681697674]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="tbd1" type="HBoxContainer" parent="VMain/S/V" unique_id=1975861621]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VMain/S/V/tbd1" unique_id=732553135]
+layout_mode = 2
+
+[node name="TextButton" type="TextureButton" parent="VMain/S/V/tbd1" unique_id=1116987107]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VMain/S/V/tbd1/TextButton" unique_id=999151627]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 357.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "ui.index.page.trophies"
+
+[node name="KeyButton" type="TextureButton" parent="VMain/S/V/tbd1" unique_id=900654077]
+custom_minimum_size = Vector2(27, 96)
+layout_mode = 2
+texture_normal = ExtResource("5_v6hc5")
+texture_pressed = ExtResource("6_605li")
+texture_disabled = ExtResource("7_2g40d")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VMain/S/V/tbd1/KeyButton" unique_id=2026565356]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -48.0
+offset_right = 13.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VMain/S/V/tbd1" unique_id=837856294]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="tbd2" type="HBoxContainer" parent="VMain/S/V" unique_id=559475263]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="VMain/S/V/tbd2" unique_id=301963875]
+layout_mode = 2
+
+[node name="TextButton" type="TextureButton" parent="VMain/S/V/tbd2" unique_id=657639663]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VMain/S/V/tbd2/TextButton" unique_id=62236831]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = 357.0
+offset_bottom = 60.0
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "ui.index.page.recipes"
+
+[node name="KeyButton" type="TextureButton" parent="VMain/S/V/tbd2" unique_id=273609352]
+custom_minimum_size = Vector2(27, 96)
+layout_mode = 2
+texture_normal = ExtResource("5_v6hc5")
+texture_pressed = ExtResource("6_605li")
+texture_disabled = ExtResource("7_2g40d")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="VMain/S/V/tbd2/KeyButton" unique_id=2019641928]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -13.5
+offset_top = -48.0
+offset_right = 13.5
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="VMain/S/V/tbd2" unique_id=1942937887]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="VMain/S/V/trophies/TextButton" to="." method="_on_text_button_trophy_pressed"]
+[connection signal="pressed" from="VMain/S/V/trophies/KeyButton" to="." method="_on_key_button_trophy_pressed"]
+[connection signal="pressed" from="VMain/S/V/recipes/TextButton" to="." method="_on_text_button_recipes_pressed"]
+[connection signal="pressed" from="VMain/S/V/recipes/KeyButton" to="." method="_on_key_button_recipes_pressed"]
+[connection signal="pressed" from="VMain/S/V/tbd1/TextButton" to="." method="_on_text_button_trophy_pressed"]
+[connection signal="pressed" from="VMain/S/V/tbd1/KeyButton" to="." method="_on_key_button_trophy_pressed"]
+[connection signal="pressed" from="VMain/S/V/tbd2/TextButton" to="." method="_on_text_button_recipes_pressed"]
+[connection signal="pressed" from="VMain/S/V/tbd2/KeyButton" to="." method="_on_key_button_recipes_pressed"]

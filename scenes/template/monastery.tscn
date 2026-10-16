@@ -9,6 +9,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t4a7r"]
 size = Vector2(118, 70)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_615lj"]
+size = Vector2(164, 67)
+
 [node name="Monastery" type="CharacterBody2D" unique_id=435201923]
 script = ExtResource("1_7hfn7")
 
@@ -34,3 +37,12 @@ offset_bottom = -246.0
 
 [node name="SmallSign" parent="." unique_id=943491670 instance=ExtResource("5_stk5j")]
 position = Vector2(43, -11)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1113885624]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1687583858]
+position = Vector2(0, 16.5)
+shape = SubResource("RectangleShape2D_615lj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

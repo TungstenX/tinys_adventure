@@ -74,7 +74,7 @@ radius = 20.0
 script = ExtResource("1_kivwq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053030167]
-scale = Vector2(1, 1.2081852)
+scale = Vector2(1, 0.8298262)
 texture = ExtResource("1_ix7db")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2132043387]

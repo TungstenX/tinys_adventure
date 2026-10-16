@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal died(exp: int)
+signal died(exp: int, trophy_name:String, coord: Vector2)
 
 enum State {
 	IDLE,
@@ -15,7 +15,8 @@ enum MobType {
 	THIEF,
 	SKULL,
 	BOMB_FISH,
-	BEAR
+	BEAR,
+	BUMBLEBEE
 }
 
 enum MobBehaviour {
@@ -41,9 +42,15 @@ enum ProjectileType {
 @export var mob_type: MobType = MobType.RED_UNIT
 @export var mob_attack_style: AttackStyle = AttackStyle.MELEE
 @export var mob_level: int = 1
+@export var mob_trophy_name: String
 @export_category("Mob Behaviour")
 @export var mob_behaviour: MobBehaviour = MobBehaviour.NORMAL
 @export var spawn_skull: bool = true
+@export_category("Switch")
+@export var listen_for_switch: bool = false
+@export var switch_id: int = -1
+@export var react_on_switch_on: bool = true
+@export var mob_behaviour_after_react = MobBehaviour.NORMAL
 @export_category("Mob Projectile")
 @export var projectile_packed: PackedScene
 
@@ -59,10 +66,12 @@ var reload_delay = 0.0
 var agro_range: float = 256.0
 var attack_range: float = 80.0
 var exp_reward: int = 600
+var attack_type: Array = ["NONE"]
 
 var fx_timer: Timer
 var speech_timer: Timer
 var reload_timer: Timer
+
 
 @onready var spawn_point: Vector2 = global_position
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -84,6 +93,7 @@ func _ready() -> void:
 	agro_range = mob_data.get("AGRO_RANGE").get(mob_level)
 	attack_range = mob_data.get("ATTACK_RANGE").get(mob_level)
 	exp_reward = mob_data.get("EXP_REWARD").get(mob_level)
+	attack_type= mob_data.get("ATTACK_TYPE")
 	%SpeechBubble.hp = str(hitpoints)
 	%SpeechBubble.atk = str(attack_damage)
 	%SpeechBubble.def = str(defence)
@@ -92,6 +102,9 @@ func _ready() -> void:
 	if mob_type == GameData.MobType.SKULL:
 		death_packed = load("res://scenes/effects/dust.tscn")
 		spawn_skull = false
+		
+	if listen_for_switch:
+		GameData.switch_tiggered.connect(react_to_switch)
 
 
 func _physics_process(_delta: float) -> void:
@@ -199,12 +212,12 @@ func spawn_projectile() -> void:
 	projectile.unit_owner = self
 	projectile.target_point = player.global_position
 	projectile.position = global_position + Vector2(0, -32)
-	if mob_type == MobType.BOMB_FISH:
-		projectile.type = ProjectileType.BOMB
+	projectile.type = ProjectileType.keys().find(attack_type[0].to_upper())
+	projectile.attack_damage = attack_damage
 	get_parent().add_child(projectile)
 	
 	
-func take_damage(damage_taken: int) -> void:
+func take_damage(damage_taken: int, _type: Array) -> void:
 	fx_take_damage()
 	hitpoints -= damage_taken
 	%SpeechBubble.hp = str(hitpoints)
@@ -263,7 +276,7 @@ func reload_timeout() -> void:
 
 func death() -> void:
 	player.set_declutter(false)
-	died.emit(exp_reward)
+	died.emit(exp_reward, mob_trophy_name, global_position)
 	#if mob_type != MobType.SKULL:
 	var death_scene = death_packed.instantiate()
 	death_scene.position = global_position + Vector2(0.0, -32.0)
@@ -273,11 +286,10 @@ func death() -> void:
 		death_scene.node = get_parent()
 	get_node("../../Effects").add_child(death_scene)
 	queue_free()
-	
 
 
 func _on_hit_box_area_entered(area: Area2D) -> void:
-	area.owner.take_damage(attack_damage)
+	area.owner.take_damage(attack_damage, attack_type)
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
@@ -289,13 +301,19 @@ func fire() -> void:
 	pass
 
 
+# TODO: Check if player can assign merck to attack before changing the pointer
 func _on_hurtbox_mouse_entered() -> void:
 	if state != State.ATTACK:
 		%SpeechBubble.set_visible(true)
+	if Input.is_action_pressed("shifty"):
+		var cursor_arrow = load("res://assets/ui/pointers/02.png")
+		Input.set_custom_mouse_cursor(cursor_arrow)
 
 
 func _on_hurtbox_mouse_exited() -> void:
 	%SpeechBubble.set_visible(false)
+	var cursor_arrow = load("res://assets/ui/pointers/01.png")
+	Input.set_custom_mouse_cursor(cursor_arrow)
 
 
 func _on_hurtbox_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
@@ -306,3 +324,20 @@ func _on_hurtbox_input_event(_viewport: Node, event: InputEvent, _shape_idx: int
 		elif event.button_index == MOUSE_BUTTON_LEFT:
 			if Input.is_action_pressed("shifty"):
 				player.select_target(self)
+
+
+func react_to_switch(id: int, on: bool) -> void:
+	if id == switch_id and on == react_on_switch_on:
+		mob_behaviour = mob_behaviour_after_react
+
+
+func _on_interaction_box_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	_on_hurtbox_input_event(viewport, event, shape_idx)
+
+
+func _on_interaction_box_mouse_entered() -> void:
+	_on_hurtbox_mouse_entered()
+
+
+func _on_interaction_box_mouse_exited() -> void:
+	_on_hurtbox_mouse_exited()

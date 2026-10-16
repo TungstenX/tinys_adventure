@@ -185,9 +185,13 @@ states/run/node = SubResource("AnimationNodeAnimation_bj7e2")
 states/run/position = Vector2(537, 33)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_1murt"), "idle", "run", SubResource("AnimationNodeStateMachineTransition_5sj0x"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ovg4i"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_70kwc"), "run", "attack", SubResource("AnimationNodeStateMachineTransition_yywfu"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_pcd0u")]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t4a7r"]
+radius = 37.0
+height = 80.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_615lj"]
 radius = 20.0
-height = 64.0
+height = 84.0
 
 [node name="Archer" type="CharacterBody2D" unique_id=1756380663 groups=["npc"]]
 collision_layer = 2
@@ -223,6 +227,16 @@ max_speed = 128.0
 debug_enabled = true
 debug_path_custom_color = Color(1, 0, 0, 1)
 
+[node name="InteractionBox" type="Area2D" parent="." unique_id=58501690]
+position = Vector2(0, 1)
+collision_layer = 16
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionBox" unique_id=1718036871]
+position = Vector2(0, -36)
+shape = SubResource("CapsuleShape2D_t4a7r")
+
 [node name="Hurtbox" type="Area2D" parent="." unique_id=626479592]
 collision_layer = 16
 collision_mask = 0
@@ -247,6 +261,9 @@ offset_top = -133.0
 offset_bottom = -133.0
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="input_event" from="InteractionBox" to="." method="_on_hurtbox_input_event"]
+[connection signal="mouse_entered" from="InteractionBox" to="." method="_on_hurtbox_mouse_entered"]
+[connection signal="mouse_exited" from="InteractionBox" to="." method="_on_hurtbox_mouse_exited"]
 [connection signal="input_event" from="Hurtbox" to="." method="_on_hurtbox_input_event"]
 [connection signal="mouse_entered" from="Hurtbox" to="." method="_on_hurtbox_mouse_entered"]
 [connection signal="mouse_exited" from="Hurtbox" to="." method="_on_hurtbox_mouse_exited"]

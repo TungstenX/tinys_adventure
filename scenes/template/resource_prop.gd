@@ -1,13 +1,8 @@
 extends Node2D
 
-enum InventoryType {
-	COIN,
-	MUSHROOM
-}
-
 @export_category("Prop")
 @export var prop_texture: Texture2D
-@export var prop_type: InventoryType
+@export var prop_template: String
 @export var prop_size: int
 @export_category("Stats")
 @export var hitpoints: int = 1
@@ -21,6 +16,7 @@ var in_range: bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var cursor_arrow = load("res://assets/ui/pointers/01.png")
 var cursor_grab = load("res://assets/ui/pointers/Cursor_02.png")
+
 
 func _ready() -> void:
 	if prop_texture != null:
@@ -50,7 +46,7 @@ func _physics_process(_delta: float) -> void:
 			#speech_bubble.set_visible(false)
 
 
-func take_damage(damage_taken: int) -> void:
+func take_damage(damage_taken: int, _a_t: Array) -> void:
 	fx_take_damage()
 	hitpoints -= damage_taken
 	if hitpoints <= 0:
@@ -62,7 +58,7 @@ func fx_take_damage() -> void:
 
 
 func death() -> void:
-	player.add_to_inventory(prop_size, prop_type)
+	player.add_to_inventory(prop_size, prop_template)
 	queue_free()
 
 
@@ -84,3 +80,7 @@ func _on_hurt_box_input_event(_viewport: Node, event: InputEvent, _shape_idx: in
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		if in_range:
 			death()
+
+
+func _on_hurt_box_mouse_entered() -> void:
+	pass # Replace with function body.

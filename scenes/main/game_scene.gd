@@ -6,11 +6,14 @@ signal levelup
 
 var total_enemies: int
 var enemies_killed: int = 0
+var trophy_fly_timer: Timer
+var current_flying_trophy
 
 @onready var HUD: Control = $UI/HUD
 @onready var player: CharacterBody2D
+@onready var trophy_packed: PackedScene = load("res://scenes/ui/trophy_ui.tscn")
 
-func _ready() -> void:
+func _ready() -> void:	
 	var enemy_array: Array = get_tree().get_nodes_in_group("enemies")
 	total_enemies = enemy_array.size()
 	for enemy in enemy_array:
@@ -22,11 +25,32 @@ func _ready() -> void:
 	GameData.popup_menu_selected.connect(on_popup_menu_selected)
 
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("hotlist1"):
+		pass
+	elif event.is_action_pressed("hotlist2"):
+		pass
+	elif event.is_action_pressed("hotlist3"):
+		pass
+	elif event.is_action_pressed("hotlist4"):
+		pass
+	elif event.is_action_pressed("hotlist5"):
+		pass
+	elif event.is_action_pressed("hotlist6"):
+		pass
+	elif event.is_action_pressed("inventory"):
+		HUD.toggle_book("inventory")
+	elif event.is_action_pressed("equipment"):
+		HUD.toggle_book("equipment")
+	elif event.is_action_pressed("book"):
+		HUD.toggle_book("book")
+
+
 func on_popup_menu_selected(which: Node2D, index: int) -> void:
 	var data = which.get_popup_data(index)
 	if data.get("need").get("from") == "player":
 		if data.get("need").get("where") == "inventory":
-			if player.get_inventory_amount(GameData.InventoryType.keys().find(data.get("need").get("what").to_upper())) >= data.get("need").get("amount"):
+			if player.get_inventory_amount(data.get("need").get("what").to_upper()) >= data.get("need").get("amount"):
 				process_popup_menu_selected(which, data)
 
 
@@ -44,15 +68,59 @@ func process_popup_menu_selected(which: Node2D, data: Dictionary):
 			#TODO: can hire (hire slots open)
 			var face_icon = which.hire_me(data.get("hire").get("number_of_actions"))
 			player.add_selected_npc(which, face_icon)
+			player.remove_from_inventory(data.get("need").get("amount"), GameData.InventoryType.keys().find(data.get("need").get("what").to_upper()))
 
 
-func enemy_died(exp_reward: int) -> void:
+func enemy_died(exp_reward: int, trophy_name: String, coord: Vector2) -> void:
 	enemies_killed += 1
 	experience_gained(exp_reward)
+	add_trophy(trophy_name, coord, true)
 	if enemies_killed == total_enemies:
 		display_end_game_screen(true)
 
 
+func add_trophy(trophy_name: String, _coord: Vector2, enemy: bool) -> void:
+	if PlayerData.add_trophy(trophy_name, enemy):
+		var icon: Texture2D = load("res://assets/ui/avatars/" + trophy_name + "_Avatar.png")
+		current_flying_trophy = trophy_packed.instantiate()
+		current_flying_trophy.icon = icon
+		var new_pos: Vector2i = (get_viewport().size / 2) + Vector2i(-256, -256)
+		current_flying_trophy.set_position(new_pos)
+		current_flying_trophy.target_position = Vector2i(0, 0)
+		current_flying_trophy.scale = Vector2(0.5, 0.5)
+		HUD.add_child(current_flying_trophy)
+		if trophy_fly_timer == null:
+			trophy_fly_timer = Timer.new()
+			add_child(trophy_fly_timer)
+			trophy_fly_timer.wait_time = .1
+			trophy_fly_timer.timeout.connect(trophy_fly_timeout)
+			trophy_fly_timer.start()
+
+
+func trophy_fly_timeout() -> void:
+	if trophy_fly_timer != null:
+		if current_flying_trophy.get_position().x > 15.0 and current_flying_trophy.get_position().y > 15.0:
+			var x = 0
+			var y = 0
+			if current_flying_trophy.scale.x < 1.0:
+				current_flying_trophy.scale += Vector2(0.01, 0.01)
+			if current_flying_trophy.get_position().x < current_flying_trophy.target_position.x:
+				x = 10
+			elif current_flying_trophy.get_position().x > current_flying_trophy.target_position.x:
+				x = -10
+			if current_flying_trophy.get_position().y < current_flying_trophy.target_position.y:
+				y = 10
+			elif current_flying_trophy.get_position().y > current_flying_trophy.target_position.y:
+				y = -10
+			current_flying_trophy.set_position(current_flying_trophy.get_position() + Vector2(x, y))
+		else:
+			trophy_fly_timer.stop()
+			remove_child(trophy_fly_timer)
+			trophy_fly_timer.queue_free()
+			HUD.remove_child(current_flying_trophy)
+			current_flying_trophy.queue_free()
+	
+	
 func experience_gained(exp_gained: int) -> void:
 	if PlayerData.get_player_level() == LevelData.MAX_LEVEL:
 		return

@@ -8,10 +8,15 @@
 [ext_resource type="Texture2D" uid="uid://dwv5tngtrjvpu" path="res://assets/environment/animated_tiles/Tree3.png" id="4_yrmkj"]
 [ext_resource type="Texture2D" uid="uid://bj2k53mplr8xn" path="res://assets/environment/animated_tiles/Tree2.png" id="5_b3xnp"]
 [ext_resource type="Texture2D" uid="uid://cce37sf58yvva" path="res://assets/environment/animated_tiles/Tree4.png" id="5_y3jej"]
+[ext_resource type="Texture2D" uid="uid://cheho133diyla" path="res://assets/environment/props/stone_circle_tile.png" id="6_b3xnp"]
 [ext_resource type="Texture2D" uid="uid://b3j5apy3hehe2" path="res://assets/environment/tilesheets/Props.png" id="6_x7tkq"]
 [ext_resource type="Texture2D" uid="uid://bddapktxy586q" path="res://assets/ui/elements/keys_sheet.png" id="7_c68al"]
+[ext_resource type="Texture2D" uid="uid://bcw48h16wdstc" path="res://assets/environment/props/mushroom_circle.png" id="7_y6ocw"]
+[ext_resource type="Texture2D" uid="uid://d1bctbafv0w8j" path="res://assets/environment/props/small_table.png" id="8_vdebw"]
 [ext_resource type="Texture2D" uid="uid://rovupt28ssea" path="res://assets/ui/elements/mouse_sheet.png" id="8_yrmkj"]
+[ext_resource type="Texture2D" uid="uid://d4n1nbucsfgmw" path="res://assets/environment/props/small_table_50.png" id="9_5571g"]
 [ext_resource type="Texture2D" uid="uid://ng4ohs5fq3e8" path="res://assets/environment/tilesheets/Bridge_All.png" id="9_yrmkj"]
+[ext_resource type="Texture2D" uid="uid://bmehgxk6oltm7" path="res://assets/ui/icons/book_icon.png" id="10_btob5"]
 [ext_resource type="Texture2D" uid="uid://dseyw2xrrpadu" path="res://assets/environment/tilesheets/Wooden Fence_64x64 tile.png" id="10_y3jej"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lk7yb"]
@@ -85,6 +90,42 @@ texture_region_size = Vector2i(192, 256)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 96)
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-20, 4, -16, 0, 16, 0, 20, 4, 20, 12, 16, 16, -16, 16, -20, 12)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5571g"]
+texture = ExtResource("6_b3xnp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(-16, -16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_btob5"]
+texture = ExtResource("7_y6ocw")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 16)
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, 16)
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 16)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ftsbg"]
+texture = ExtResource("8_vdebw")
+texture_region_size = Vector2i(84, 102)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 32)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_88ove"]
+texture = ExtResource("9_5571g")
+texture_region_size = Vector2i(42, 51)
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_spru0"]
+texture = ExtResource("10_btob5")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dgahu"]
 texture = ExtResource("3_c68al")
@@ -171,6 +212,7 @@ texture = ExtResource("8_yrmkj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
+2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uidgf"]
 resource_name = "Bridge Broken"
@@ -224,3 +266,8 @@ sources/9 = SubResource("TileSetAtlasSource_v1xgm")
 sources/10 = SubResource("TileSetAtlasSource_b3xnp")
 sources/11 = SubResource("TileSetAtlasSource_y6ocw")
 sources/12 = SubResource("TileSetAtlasSource_vdebw")
+sources/13 = SubResource("TileSetAtlasSource_5571g")
+sources/14 = SubResource("TileSetAtlasSource_btob5")
+sources/15 = SubResource("TileSetAtlasSource_ftsbg")
+sources/16 = SubResource("TileSetAtlasSource_88ove")
+sources/17 = SubResource("TileSetAtlasSource_spru0")

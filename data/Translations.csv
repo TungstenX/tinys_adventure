@@ -10,3 +10,43 @@ ui.game_over,Game Over,Fin del juego
 ui.replay,Replay,Repetir
 ui.main_menu,Main Menu,Menú principal
 ui.f1.help,Help,Ayuda
+ui.npc.name.archer,Archer,Arquero
+ui.inventory.title.you, My Inventory, Mi inventario
+ui.equipment.title.you, My Equipment, Mi equipo
+ui.trophies.title.you, My Trophies, Mis trofeos
+ui.recipes.title.you, My Recipes, Mis recetas
+ui.book.title.index, My Book, Mi libro
+ui.index.page.inventory,My Inventory,Mi inventario
+ui.index.page.equipment,My Equipment,Mi equipo
+ui.index.page.trophies,My Trophies,Mis trofeos
+ui.index.page.recipes,My Recipes,Mis recetas
+ui.trophy.name.bear,Bear,Oso
+ui.trophy.name.bomb_fish,Bomb Fish,Pez bomba
+ui.trophy.name.bumblebee,Bumblebee,Abejorro
+ui.trophy.name.giant_bat,Giant Bat,Murciélago gigante
+ui.trophy.name.gnoll,Gnoll,Gnoll
+ui.trophy.name.gnome,Gnome,Gnomo
+ui.trophy.name.harpoon_shark,Harpoon Shark,Tiburón arpón
+ui.trophy.name.hex_shaman,Hex Shaman,Chamán de la maldición
+ui.trophy.name.imp,Imp,Duende
+ui.trophy.name.lizard,Lizard,Lagarto
+ui.trophy.name.minotaur,Minotaur,Minotauro
+ui.trophy.name.paddle_shark,Paddle Shark,Tiburón remo
+ui.trophy.name.panda,Panda,Panda
+ui.trophy.name.skull,Skull,Calavera
+ui.trophy.name.slingshot_gnome,Slingshot Gnome,Gnomo con tirachinas
+ui.trophy.name.snake,Snake,Serpiente
+ui.trophy.name.spear_goblin,Spear Goblin,Duende con lanza
+ui.trophy.name.spider,Spider,Araña
+ui.trophy.name.thief,Thief,Ladrón
+ui.trophy.name.torch_goblin,Torch Goblin,Duende con antorcha
+ui.trophy.name.troll,Troll,Troll
+ui.trophy.name.turtle,Turtle,Tortuga
+ui.equipment.stat.damage,Damage,daño
+ui.equipment.stat.attack_speed,Attack Speed,velocidad de ataque
+ui.equipment.stat.range,Range,alcance
+ui.equipment.stat.armor,Armor,armadura
+ui.equipment.stat.defence,Defence,defensa
+ui.standard_sword.name,Poison Sword,Espada envenenada
+ui.poison_sword.name,Poison Sword,Espada envenenada
+ui.poison_sword.name,Mushroom,Champiñón

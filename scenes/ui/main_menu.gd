@@ -24,7 +24,7 @@ func _on_resized() -> void:
 	
 	#var width_factor: float = get_viewport().size.x / default_control_size.x 
 	var height_factor: float = get_viewport().size.y / default_control_size.y
-	print("Height %: ", height_factor * 100.0)
+	#print("Height %: ", height_factor * 100.0)
 	var factor = height_factor
 	#if factor > width_factor: # use the smallest factor
 		#factor = width_factor

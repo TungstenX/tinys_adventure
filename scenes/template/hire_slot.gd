@@ -7,7 +7,7 @@ var selected: bool = false
 var npc: Node2D
 
 func set_avatar(face_icon: Texture2D) -> void:
-	get_node("BG/Avatar").set_texture(face_icon)
+	get_node("Avatar").set_texture(face_icon)
 
 
 func set_selected(_selected: bool) -> void:

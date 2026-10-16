@@ -3,7 +3,15 @@ extends Node
 @export var main_menu_packed: PackedScene
 @export var game_scene_packed: PackedScene
 
-func _ready() -> void:
+enum TestEnum {
+	FIRST_NUME,
+	SECOND_ENUM
+}
+
+func _ready() -> void:	
+	#print("Enum keys(): ", TestEnum.keys())
+	#print("Enum keys().get(TestEnum.SECOND_ENUM): ", TestEnum.keys().get(TestEnum.SECOND_ENUM))
+	#print("Enum keys().find(\"SECOND_ENUM\"): ", TestEnum.keys().find("SECOND_ENUM"))
 	#TranslationServer.set_locale("es")
 	#print(TranslationServer.get_locale())
 	#print(tr("ui.new_game"))

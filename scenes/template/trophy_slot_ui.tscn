@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://cwq2ufib6tm1b"]
+
+[ext_resource type="Theme" uid="uid://cfjv3ii2rdejh" path="res://resources/themes/small.tres" id="1_kgvyc"]
+[ext_resource type="Script" uid="uid://bvehtusobt0fw" path="res://scenes/template/trophy_slot_ui.gd" id="2_bs7th"]
+[ext_resource type="Texture2D" uid="uid://bhw68x6oc46qj" path="res://assets/ui/elements/wood_table_middle_center.png" id="3_3if5w"]
+[ext_resource type="Texture2D" uid="uid://qrk0yantyyqw" path="res://assets/ui/avatars/Bear_Avatar.png" id="4_e0cbm"]
+[ext_resource type="Texture2D" uid="uid://dx845qqujm0ul" path="res://assets/ui/ribbons/ribbon_red_trophy.png" id="5_rvbds"]
+
+[node name="TrophySlotUI" type="Control" unique_id=2006658720]
+custom_minimum_size = Vector2(64, 114)
+custom_maximum_size = Vector2(64, 114)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1856.0
+offset_bottom = -966.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_kgvyc")
+script = ExtResource("2_bs7th")
+
+[node name="BG" type="TextureRect" parent="." unique_id=795088116]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3if5w")
+expand_mode = 3
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1646792941]
+custom_minimum_size = Vector2(64, 64)
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_e0cbm")
+expand_mode = 3
+
+[node name="Ribbon" type="TextureRect" parent="." unique_id=1080344939]
+custom_minimum_size = Vector2(64, 0)
+custom_maximum_size = Vector2(64, -1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -50.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("5_rvbds")
+expand_mode = 2
+
+[node name="Name" type="Label" parent="." unique_id=303193622]
+custom_minimum_size = Vector2(60, 0)
+custom_maximum_size = Vector2(60, -1)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -50.0
+offset_right = 62.0
+offset_bottom = -28.0
+grow_vertical = 0
+theme_override_constants/line_spacing = -8
+theme_override_font_sizes/font_size = 16
+text = "Chamán"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Amount" type="Label" parent="." unique_id=634923859]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -112.0
+offset_right = -41.0
+offset_bottom = -90.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 16
+text = "999"

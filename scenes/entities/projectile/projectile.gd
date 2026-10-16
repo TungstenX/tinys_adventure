@@ -18,11 +18,18 @@ enum ProjectileDir {
 }
 
 var speed: int = 256
+var level: int = 1
 var state: State = State.FLYING
 var type: ProjectileType = ProjectileType.ARROW
 var target_point: Vector2
 var attack_damage: int = 200
+var attack_damage_multiplier: int = 1
 var unit_owner
+var blocked_count: int = 5
+var old_position: Vector2
+var aoe_radius: int = 1
+var hitpoints: int = -1
+var attack_type: Array
 
 var angle: float = 0.0
 var projectile_dir: ProjectileDir = ProjectileDir.RIGHT
@@ -45,14 +52,19 @@ const RIGHT_DOWN_DIR: Vector2 = Vector2((PI/4.0) + (PI/8.0), PI/8.0)
 # TODO: 
 # attack_damage from json
 # bomb needs to roll a bit when landed
-# arrow and bomb needs parabolic flight
+# arrow needs parabolic flight
 func _ready() -> void:
 	if type == ProjectileType.ARROW:
 		arrow_hit_packed = load("res://scenes/entities/projectile/arrow_hit.tscn")
 	elif type == ProjectileType.BOMB:
 		animation_player.play("fly")
 		explosion_packed = load("res://scenes/entities/npc/mobs/explosion.tscn")
-		attack_damage = 20
+		var data = GameData.get_mob_data_for(ProjectileType.keys().get(type))
+		speed = data.get("SPEED").get(level - 1)
+		attack_damage_multiplier = data.get("ATTACK_DAMAGE_MULTIPLIER").get(level - 1)
+		aoe_radius = data.get("AOE_RADIUS").get(level - 1)
+		hitpoints = data.get("HITPOINTS").get(level - 1)
+		attack_type = data.get("ATTACK_TYPE")
 
 
 func _physics_process(_delta: float) -> void:
@@ -60,7 +72,7 @@ func _physics_process(_delta: float) -> void:
 		move()
 	elif state == State.LANDED:
 		if type == ProjectileType.BOMB:
-			roll()
+			end_flight()
 	else:
 		pass
 
@@ -72,16 +84,24 @@ func move() -> void:
 		state = State.LANDED
 		end_flight()
 		return
-		
+	
 	var dir = global_position.direction_to(target_point)
 	velocity = dir * speed
 	angle = global_position.angle_to_point(target_point)
 	projectile_dir = get_dir(angle)
 	move_and_slide()
-
-
-func roll() -> void:
-	pass
+	
+	#if old_position == null:
+		#old_position = global_position
+	#elif old_position == global_position:
+		#blocked_count -= 1
+	#else:
+		#old_position = global_position
+		#blocked_count -= 5
+	#
+	#if blocked_count <= 0:
+		#state = State.LANDED
+		#end_flight()
 
 
 func get_dir(ang: float) -> ProjectileDir:
@@ -148,12 +168,14 @@ func get_dir(ang: float) -> ProjectileDir:
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if unit_owner != area.owner:
-		area.owner.take_damage(attack_damage)
+		var a_t = []
+		a_t.append(attack_type[0])
+		area.owner.take_damage(attack_damage, a_t)
 		state = State.HIT
 		end_flight()
 
 
-func take_damage(_damage: float) -> void:
+func take_damage(_damage: float, _a_t: Array) -> void:
 	if type == ProjectileType.BOMB:
 		end_flight()
 
@@ -186,8 +208,9 @@ func end_flight() -> void:
 		var explosion = explosion_packed.instantiate()
 		explosion.position = global_position
 		#TODO from json file
-		explosion.attack_damage = attack_damage * 10
-		explosion.aoe_radius = 100
+		explosion.attack_damage = attack_damage * attack_damage_multiplier
+		explosion.aoe_radius = aoe_radius
+		explosion.attack_type = attack_type
 		get_parent().add_child(explosion)
 		print("Apply area damage")
 		

@@ -10,7 +10,7 @@ var fx_destroy_timer: Timer
 @onready var dust_packed: PackedScene = load("res://scenes/effects/dust.tscn")
 
 func _ready() -> void:
-	npc_type = NpcType.TOWER
+	npc_type = "TOWER"
 	do_ready()
 	if destroyed:
 		get_node("Sprite2D").texture = texture_destroyed

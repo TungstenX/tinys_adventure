@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://bw4jgeu4qyqkl"]
+
+[ext_resource type="Theme" uid="uid://cfjv3ii2rdejh" path="res://resources/themes/small.tres" id="1_0bu67"]
+[ext_resource type="Script" uid="uid://db6juuygsl2by" path="res://scenes/template/split_popup.gd" id="1_cgekb"]
+[ext_resource type="Texture2D" uid="uid://bcs7340rfjifr" path="res://assets/ui/buttons/Button_Blue.png" id="3_5x2ae"]
+[ext_resource type="Texture2D" uid="uid://dx845qqujm0ul" path="res://assets/ui/ribbons/ribbon_red_trophy.png" id="3_tbjrx"]
+[ext_resource type="Texture2D" uid="uid://7rg0asrj2qsp" path="res://assets/ui/buttons/Button_Blue_Pressed.png" id="4_cgekb"]
+[ext_resource type="Script" uid="uid://oek8gylu4ufd" path="res://scenes/template/number_line_input.gd" id="4_tbjrx"]
+[ext_resource type="Texture2D" uid="uid://c4mqaqfqhi0tx" path="res://assets/ui/buttons/Button_Disable.png" id="5_tbjrx"]
+
+[node name="SplitPopup" type="PopupPanel" unique_id=357407856]
+oversampling_override = 1.0
+size = Vector2i(164, 72)
+visible = true
+script = ExtResource("1_cgekb")
+
+[node name="N" type="NinePatchRect" parent="." unique_id=963472225]
+custom_minimum_size = Vector2(156, 64)
+custom_maximum_size = Vector2(156, 64)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 160.0
+offset_bottom = 68.0
+theme = ExtResource("1_0bu67")
+texture = ExtResource("3_tbjrx")
+patch_margin_left = 4
+patch_margin_top = 3
+patch_margin_right = 4
+patch_margin_bottom = 13
+
+[node name="H" type="HBoxContainer" parent="N" unique_id=2126295733]
+custom_maximum_size = Vector2(152, -1)
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 162.0
+offset_bottom = 66.0
+theme_override_constants/separation = 2
+
+[node name="Amount" type="LineEdit" parent="N/H" unique_id=1392871814]
+custom_minimum_size = Vector2(92, 60)
+custom_maximum_size = Vector2(92, 60)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 64
+placeholder_text = "1"
+alignment = 2
+max_length = 3
+caret_blink = true
+script = ExtResource("4_tbjrx")
+
+[node name="Confirm" type="TextureButton" parent="N/H" unique_id=869618284]
+layout_mode = 2
+texture_normal = ExtResource("3_5x2ae")
+texture_pressed = ExtResource("4_cgekb")
+texture_disabled = ExtResource("5_tbjrx")
+
+[connection signal="pressed" from="N/H/Confirm" to="." method="_on_confirm_pressed"]

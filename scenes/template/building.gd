@@ -8,6 +8,7 @@ enum BuildingType {
 @export_category("Popup Menu Settings")
 @export var dismiss_after_click: bool = true
 @export var type: BuildingType = BuildingType.MUSHROOM
+@export var player_distance: int = -1
 
 @export_category("Popup Menu List")
 @export var row_1_col_1a: String
@@ -31,8 +32,6 @@ enum BuildingType {
 @export var row_3_col_3a: String
 @export var row_3_col_3b: Texture2D
 
-@export var player_distance: float = -1.0
-
 @export_category("Icon Texture")
 @export var icon: Texture2D
 @export var h_v_frames: Vector2 = Vector2(1, 1)
@@ -40,6 +39,9 @@ enum BuildingType {
 @export_category("Icon Tansform")
 @export var icon_position: Vector2 = Vector2(0.0, 0.0)
 @export var icon_scale: Vector2 = Vector2(1.0, 1.0)
+
+@onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
+var within_range: bool = false
 
 func _ready() -> void:
 	var popup_menu = get_node("PopupMenu")
@@ -59,16 +61,14 @@ func _ready() -> void:
 		small_sign.icon_scale = icon_scale
 
 
-func _on_area_2d_mouse_entered() -> void:
-	#if not get_node("SpeechBubble").is_visible():
-		#get_node("SpeechBubble").set_visible(true)
-	pass
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body == player:
+		within_range = true
 
 
-func _on_area_2d_mouse_exited() -> void:
-	#if get_node("SpeechBubble").is_visible():
-		#get_node("SpeechBubble").set_visible(false)
-	pass
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if body == player:
+		within_range = false
 
 
 func get_popup_data(index: int) -> Dictionary:

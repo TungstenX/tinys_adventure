@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://csromag6nutsr"]
+
+[ext_resource type="Theme" uid="uid://cfjv3ii2rdejh" path="res://resources/themes/small.tres" id="1_f5hdd"]
+[ext_resource type="Texture2D" uid="uid://qrk0yantyyqw" path="res://assets/ui/avatars/Bear_Avatar.png" id="1_kh5w1"]
+[ext_resource type="Script" uid="uid://drlxax3hqhka" path="res://scenes/ui/trophy_ui.gd" id="1_x4nmv"]
+
+[node name="TrophyUI" type="Control" unique_id=2006658720]
+custom_minimum_size = Vector2(256, 256)
+custom_maximum_size = Vector2(256, 256)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1664.0
+offset_bottom = -824.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_f5hdd")
+script = ExtResource("1_x4nmv")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1646792941]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kh5w1")
+expand_mode = 3

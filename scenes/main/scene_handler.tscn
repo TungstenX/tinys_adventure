@@ -8,3 +8,5 @@
 script = ExtResource("1_4bqbg")
 main_menu_packed = ExtResource("2_wtu2y")
 game_scene_packed = ExtResource("3_0wxda")
+
+[node name="UISFX" type="AudioStreamPlayer" parent="." unique_id=2138023325]

@@ -105,11 +105,22 @@ func _on_row_3_mouse_exited() -> void:
 
 
 func _on_row_1_gui_input(event: InputEvent) -> void:
+	send_signal(event, 1)
+
+
+func _on_row_2_gui_input(event: InputEvent) -> void:
+	send_signal(event, 2)
+
+
+func _on_row_3_gui_input(event: InputEvent) -> void:
+	send_signal(event, 3)
+
+
+func send_signal(event: InputEvent, row: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		if player_distance < 0.0 or distance_to_player() <= player_distance:
-			print("TODO: Event: ", event)
-			GameData.popup_menu_selected.emit(get_parent(), 1)
-			get_node("VContent/Row1").accept_event()
+		if get_parent().within_range or player_distance < 0.0 or distance_to_player() <= player_distance:
+			GameData.popup_menu_selected.emit(get_parent(), row)
+			get_node("VContent/Row" + str(row)).accept_event()
 			if dismiss_after_click:
 				set_visible(false)
 		else:

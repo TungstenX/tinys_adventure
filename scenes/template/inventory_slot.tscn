@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d1s23p8dn0ay1" path="res://assets/ui/elements/Carved_3Slides.png" id="2_fi62g"]
 [ext_resource type="Script" uid="uid://cqsgjw1av607b" path="res://scenes/template/inventory_slot.gd" id="2_uwfxv"]
 [ext_resource type="Texture2D" uid="uid://v0oew35a07u6" path="res://assets/environment/props/03.png" id="3_uwfxv"]
+[ext_resource type="Theme" uid="uid://cfjv3ii2rdejh" path="res://resources/themes/small.tres" id="5_uwfxv"]
 
 [node name="InventorySlot" type="Control" unique_id=1405290813]
 custom_minimum_size = Vector2(72, 64)
@@ -51,3 +52,11 @@ layout_mode = 2
 size_flags_vertical = 4
 texture = ExtResource("3_uwfxv")
 expand_mode = 3
+
+[node name="HotListNumber" type="Label" parent="." unique_id=2111501445]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 8.0
+offset_bottom = 22.0
+theme = ExtResource("5_uwfxv")

@@ -1,0 +1,177 @@
+[gd_scene format=3 uid="uid://dov78vfpw1j61"]
+
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="1_7nagc"]
+[ext_resource type="Script" uid="uid://byunpgai34fm2" path="res://scenes/ui/inventory_ui.gd" id="1_drsq2"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="3_bsps8"]
+[ext_resource type="PackedScene" uid="uid://da25qpfr61t1m" path="res://scenes/template/inventory_slot_ui.tscn" id="3_nuief"]
+[ext_resource type="Texture2D" uid="uid://deelx53kxxgki" path="res://assets/ui/avatars/Avatars_01.png" id="4_ldtye"]
+[ext_resource type="Texture2D" uid="uid://bcs7340rfjifr" path="res://assets/ui/buttons/Button_Blue.png" id="6_8r0c3"]
+[ext_resource type="Texture2D" uid="uid://7rg0asrj2qsp" path="res://assets/ui/buttons/Button_Blue_Pressed.png" id="7_ui1cf"]
+[ext_resource type="Texture2D" uid="uid://c4mqaqfqhi0tx" path="res://assets/ui/buttons/Button_Disable.png" id="8_t28gt"]
+
+[node name="InventoryUI" type="Control" unique_id=1254877519]
+custom_minimum_size = Vector2(476, 600)
+custom_maximum_size = Vector2(476, 600)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1444.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_drsq2")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=299057775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7nagc")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="VMain" type="VBoxContainer" parent="." unique_id=502892972]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 444.0
+offset_bottom = 572.0
+
+[node name="Header" type="HBoxContainer" parent="VMain" unique_id=1061718200]
+custom_minimum_size = Vector2(0, 64)
+custom_maximum_size = Vector2(-1, 64)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="VMain/Header" unique_id=1633557005]
+layout_mode = 2
+texture = ExtResource("4_ldtye")
+expand_mode = 3
+
+[node name="Title" type="Label" parent="VMain/Header" unique_id=318288931]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("3_bsps8")
+theme_override_font_sizes/font_size = 40
+text = "ui.inventory.title.you"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="S" type="ScrollContainer" parent="VMain" unique_id=1003413791]
+custom_minimum_size = Vector2(412, 404)
+custom_maximum_size = Vector2(412, 404)
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="V" type="VBoxContainer" parent="VMain/S" unique_id=899505171]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="G" type="GridContainer" parent="VMain/S/V" unique_id=1276058242]
+layout_mode = 2
+size_flags_vertical = 3
+columns = 6
+
+[node name="InventorySlotUI1" parent="VMain/S/V/G" unique_id=308108162 instance=ExtResource("3_nuief")]
+layout_mode = 2
+hot_list_number = 1
+
+[node name="InventorySlotUI2" parent="VMain/S/V/G" unique_id=1330992496 instance=ExtResource("3_nuief")]
+layout_mode = 2
+hot_list_number = 2
+
+[node name="InventorySlotUI3" parent="VMain/S/V/G" unique_id=427567162 instance=ExtResource("3_nuief")]
+layout_mode = 2
+hot_list_number = 3
+
+[node name="InventorySlotUI4" parent="VMain/S/V/G" unique_id=2046193954 instance=ExtResource("3_nuief")]
+layout_mode = 2
+hot_list_number = 4
+
+[node name="InventorySlotUI5" parent="VMain/S/V/G" unique_id=637187852 instance=ExtResource("3_nuief")]
+layout_mode = 2
+hot_list_number = 5
+
+[node name="InventorySlotUI6" parent="VMain/S/V/G" unique_id=896593247 instance=ExtResource("3_nuief")]
+layout_mode = 2
+hot_list_number = 6
+
+[node name="Buttons" type="HBoxContainer" parent="VMain" unique_id=907887830]
+layout_mode = 2
+
+[node name="Previous" type="TextureButton" parent="VMain/Buttons" unique_id=107846144]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("6_8r0c3")
+texture_pressed = ExtResource("7_ui1cf")
+texture_disabled = ExtResource("8_t28gt")
+
+[node name="Label" type="Label" parent="VMain/Buttons/Previous" unique_id=1713435643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_bsps8")
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = -1
+theme_override_font_sizes/font_size = 32
+text = "▲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="VMain/Buttons" unique_id=1332149670]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("3_bsps8")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="TextureButton" parent="VMain/Buttons" unique_id=610178522]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("6_8r0c3")
+texture_pressed = ExtResource("7_ui1cf")
+texture_disabled = ExtResource("8_t28gt")
+
+[node name="Label" type="Label" parent="VMain/Buttons/Next" unique_id=1231276306]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_bsps8")
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = -1
+theme_override_font_sizes/font_size = 32
+text = "▼"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="VMain/Buttons/Previous" to="." method="_on_previous_button_down"]
+[connection signal="button_up" from="VMain/Buttons/Previous" to="." method="_on_previous_button_up"]
+[connection signal="pressed" from="VMain/Buttons/Previous" to="." method="_on_previous_pressed"]
+[connection signal="button_down" from="VMain/Buttons/Next" to="." method="_on_next_button_down"]
+[connection signal="button_up" from="VMain/Buttons/Next" to="." method="_on_next_button_up"]
+[connection signal="pressed" from="VMain/Buttons/Next" to="." method="_on_next_pressed"]

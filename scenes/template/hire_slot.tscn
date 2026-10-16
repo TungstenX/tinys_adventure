@@ -21,7 +21,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_pqv7y")
 
-[node name="Avatar" type="TextureRect" parent="BG" unique_id=912280768]
+[node name="Avatar" type="TextureRect" parent="." unique_id=912280768]
 custom_minimum_size = Vector2(64, 64)
 custom_maximum_size = Vector2(64, 64)
 layout_mode = 0
@@ -32,4 +32,4 @@ offset_bottom = 68.0
 texture = ExtResource("3_pqv7y")
 expand_mode = 3
 
-[connection signal="gui_input" from="BG/Avatar" to="." method="_on_avatar_gui_input"]
+[connection signal="gui_input" from="Avatar" to="." method="_on_avatar_gui_input"]

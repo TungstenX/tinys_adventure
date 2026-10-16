@@ -1,0 +1,195 @@
+[gd_scene format=3 uid="uid://c0erpvqe2mup8"]
+
+[ext_resource type="Script" uid="uid://cwmpeky5q1un8" path="res://scenes/ui/book_page_equipment_ui.gd" id="1_4826g"]
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="1_c4jjw"]
+[ext_resource type="Texture2D" uid="uid://deelx53kxxgki" path="res://assets/ui/avatars/Avatars_01.png" id="2_evns6"]
+[ext_resource type="Theme" uid="uid://33fwqbw6yhph" path="res://resources/themes/main.tres" id="3_ld2ev"]
+[ext_resource type="Texture2D" uid="uid://dh4yn6nqegek5" path="res://assets/ui/art/equipment_character.png" id="4_evns6"]
+[ext_resource type="PackedScene" uid="uid://c3pm4msum5ndw" path="res://scenes/template/equipment_slot_ui.tscn" id="4_ld2ev"]
+[ext_resource type="Texture2D" uid="uid://bcs7340rfjifr" path="res://assets/ui/buttons/Button_Blue.png" id="5_8w8le"]
+[ext_resource type="Texture2D" uid="uid://cfg058cont1ph" path="res://assets/ui/art/equipment_head.png" id="5_uihc6"]
+[ext_resource type="Texture2D" uid="uid://7rg0asrj2qsp" path="res://assets/ui/buttons/Button_Blue_Pressed.png" id="6_2jhax"]
+[ext_resource type="Texture2D" uid="uid://w0ycsxpvgqol" path="res://assets/ui/art/equipment_offhand.png" id="6_yhqpb"]
+[ext_resource type="Texture2D" uid="uid://dl8tbp22gew45" path="res://assets/ui/art/equipment_body.png" id="7_4826g"]
+[ext_resource type="Texture2D" uid="uid://c4mqaqfqhi0tx" path="res://assets/ui/buttons/Button_Disable.png" id="7_yhqpb"]
+[ext_resource type="Texture2D" uid="uid://cqurs2mn72kao" path="res://assets/ui/art/equipment_mainhand.png" id="9_ka4sw"]
+
+[node name="BookPageEquipment" type="Control" unique_id=1254877519]
+custom_minimum_size = Vector2(476, 600)
+custom_maximum_size = Vector2(476, 600)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1444.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4826g")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=299057775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_c4jjw")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="HMain" type="VBoxContainer" parent="." unique_id=2055600005]
+custom_minimum_size = Vector2(412, 540)
+custom_maximum_size = Vector2(412, 540)
+layout_mode = 1
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 444.0
+offset_bottom = 572.0
+
+[node name="Header" type="HBoxContainer" parent="HMain" unique_id=677745892]
+custom_minimum_size = Vector2(0, 64)
+custom_maximum_size = Vector2(-1, 64)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Icon" type="TextureRect" parent="HMain/Header" unique_id=183226116]
+layout_mode = 2
+texture = ExtResource("2_evns6")
+expand_mode = 3
+
+[node name="Title" type="Label" parent="HMain/Header" unique_id=605125586]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("3_ld2ev")
+theme_override_font_sizes/font_size = 40
+text = "ui.equipment.title.you"
+vertical_alignment = 1
+clip_text = true
+text_overrun_behavior = 5
+
+[node name="Row1" type="HBoxContainer" parent="HMain" unique_id=670432699]
+custom_minimum_size = Vector2(412, 404)
+custom_maximum_size = Vector2(412, 404)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Col1" type="VBoxContainer" parent="HMain/Row1" unique_id=758528714]
+custom_minimum_size = Vector2(137, 0)
+custom_maximum_size = Vector2(137, -1)
+layout_mode = 2
+alignment = 1
+
+[node name="Head" parent="HMain/Row1/Col1" unique_id=308108162 instance=ExtResource("4_ld2ev")]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("5_uihc6")
+
+[node name="Offhand" parent="HMain/Row1/Col1" unique_id=1041267145 instance=ExtResource("4_ld2ev")]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("6_yhqpb")
+
+[node name="Body" parent="HMain/Row1/Col1" unique_id=638514882 instance=ExtResource("4_ld2ev")]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("7_4826g")
+
+[node name="Col2" type="VBoxContainer" parent="HMain/Row1" unique_id=1998026186]
+custom_minimum_size = Vector2(137, 0)
+custom_maximum_size = Vector2(137, -1)
+layout_mode = 2
+alignment = 1
+
+[node name="Body" type="TextureRect" parent="HMain/Row1/Col2" unique_id=466593732]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("4_evns6")
+
+[node name="Col3" type="VBoxContainer" parent="HMain/Row1" unique_id=804980675]
+custom_minimum_size = Vector2(137, 0)
+custom_maximum_size = Vector2(137, -1)
+layout_mode = 2
+alignment = 1
+
+[node name="Hands" parent="HMain/Row1/Col3" unique_id=1942810161 instance=ExtResource("4_ld2ev")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Mainhand" parent="HMain/Row1/Col3" unique_id=89697997 instance=ExtResource("4_ld2ev")]
+layout_mode = 2
+size_flags_horizontal = 4
+icon = ExtResource("9_ka4sw")
+
+[node name="Legs" parent="HMain/Row1/Col3" unique_id=482874281 instance=ExtResource("4_ld2ev")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Buttons" type="HBoxContainer" parent="HMain" unique_id=159967259]
+layout_mode = 2
+
+[node name="Previous" type="TextureButton" parent="HMain/Buttons" unique_id=1956375293]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("5_8w8le")
+texture_pressed = ExtResource("6_2jhax")
+texture_disabled = ExtResource("7_yhqpb")
+
+[node name="Label" type="Label" parent="HMain/Buttons/Previous" unique_id=327816213]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ld2ev")
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = -1
+theme_override_font_sizes/font_size = 32
+text = "▲"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="HMain/Buttons" unique_id=2094424967]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("3_ld2ev")
+theme_override_font_sizes/font_size = 32
+text = "1/1?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="TextureButton" parent="HMain/Buttons" unique_id=1230521991]
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("5_8w8le")
+texture_pressed = ExtResource("6_2jhax")
+texture_disabled = ExtResource("7_yhqpb")
+
+[node name="Label" type="Label" parent="HMain/Buttons/Next" unique_id=1259259584]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -8.0
+offset_right = 2.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_ld2ev")
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = -1
+theme_override_font_sizes/font_size = 32
+text = "▼"
+horizontal_alignment = 1
+vertical_alignment = 1

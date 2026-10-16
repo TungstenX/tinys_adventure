@@ -10,12 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://cca3yha14qfeq" path="res://scenes/template/f_menu.tscn" id="8_wktqh"]
 [ext_resource type="PackedScene" uid="uid://x13bktcnaixm" path="res://scenes/template/inventory_slot.tscn" id="9_jck2h"]
 [ext_resource type="Texture2D" uid="uid://0ejmte6f5go1" path="res://assets/ui/elements/icons/Icon_03.png" id="10_2kpdr"]
-[ext_resource type="Texture2D" uid="uid://v0oew35a07u6" path="res://assets/environment/props/03.png" id="10_17w4u"]
+[ext_resource type="PackedScene" uid="uid://bn65vm4tbne50" path="res://scenes/template/ui_slot_more_button.tscn" id="10_nh11s"]
 [ext_resource type="PackedScene" uid="uid://cokrktr376ce0" path="res://scenes/template/stat_slot.tscn" id="12_x5m58"]
 [ext_resource type="Texture2D" uid="uid://crwlphqv4ceun" path="res://assets/ui/elements/icons/Icon_04.png" id="13_i2glb"]
 [ext_resource type="Texture2D" uid="uid://b76x5s8mmwjdf" path="res://assets/ui/elements/icons/Icon_05.png" id="14_3trih"]
 [ext_resource type="Texture2D" uid="uid://etalrpvtabs8" path="res://assets/ui/elements/icons/Icon_06.png" id="15_5smp8"]
 [ext_resource type="Texture2D" uid="uid://bwarmingd2nyc" path="res://assets/ui/elements/icons/Icon_08.png" id="16_nh11s"]
+[ext_resource type="PackedScene" uid="uid://d1i184imiyt33" path="res://scenes/ui/book.tscn" id="17_5smp8"]
 [ext_resource type="Texture2D" uid="uid://dxvmxopp1hu56" path="res://assets/ui/elements/icons/Icon_01.png" id="17_rc4em"]
 [ext_resource type="PackedScene" uid="uid://8sycuytig4ud" path="res://scenes/template/god_response.tscn" id="18_5smp8"]
 
@@ -23,7 +24,9 @@
 script = ExtResource("1_rfwcf")
 end_game_screen_packed = ExtResource("2_5odut")
 
-[node name="TestMap" parent="." unique_id=2045157902 instance=ExtResource("1_sdya7")]
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=218746584]
+
+[node name="TestMap" parent="CanvasModulate" unique_id=2045157902 instance=ExtResource("1_sdya7")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=986976175]
 
@@ -109,62 +112,83 @@ layout_mode = 1
 anchors_preset = 0
 
 [node name="InventoryPanel" type="Panel" parent="UI/HUD" unique_id=784712686]
-custom_minimum_size = Vector2(72, 0)
+custom_minimum_size = Vector2(0, 64)
+custom_maximum_size = Vector2(-1, 64)
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 600.0
-offset_right = 672.0
-offset_bottom = 1080.0
-grow_horizontal = 0
-grow_vertical = 2
+grow_horizontal = 2
 
-[node name="Inventory" type="VBoxContainer" parent="UI/HUD" unique_id=196392672]
+[node name="Inventory" type="HBoxContainer" parent="UI/HUD" unique_id=825786812]
 layout_mode = 1
-offset_right = 72.0
-offset_bottom = 132.0
+offset_right = 452.0
+offset_bottom = 64.0
 alignment = 1
+
+[node name="InventorySlot1" parent="UI/HUD/Inventory" unique_id=1923835725 instance=ExtResource("9_jck2h")]
+layout_mode = 2
+hot_list_number = 1
 
 [node name="InventorySlot2" parent="UI/HUD/Inventory" unique_id=1405290813 instance=ExtResource("9_jck2h")]
 layout_mode = 2
-icon = ExtResource("10_2kpdr")
+hot_list_number = 2
 
-[node name="InventorySlot" parent="UI/HUD/Inventory" unique_id=1923835725 instance=ExtResource("9_jck2h")]
+[node name="InventorySlot3" parent="UI/HUD/Inventory" unique_id=1348801262 instance=ExtResource("9_jck2h")]
 layout_mode = 2
-type = 1
-icon = ExtResource("10_17w4u")
+hot_list_number = 3
+
+[node name="InventorySlot4" parent="UI/HUD/Inventory" unique_id=1433748831 instance=ExtResource("9_jck2h")]
+layout_mode = 2
+hot_list_number = 4
+
+[node name="InventorySlot5" parent="UI/HUD/Inventory" unique_id=1094762263 instance=ExtResource("9_jck2h")]
+layout_mode = 2
+hot_list_number = 5
+
+[node name="InventorySlot6" parent="UI/HUD/Inventory" unique_id=926533452 instance=ExtResource("9_jck2h")]
+layout_mode = 2
+hot_list_number = 6
+
+[node name="UISlotMoreButton" parent="UI/HUD/Inventory" unique_id=1200325940 instance=ExtResource("10_nh11s")]
+layout_mode = 2
+book_page = "inventory"
+book_hot_key = "I"
 
 [node name="HirePanel" type="Panel" parent="UI/HUD" unique_id=756227899]
 custom_minimum_size = Vector2(72, 0)
-custom_maximum_size = Vector2(72, 500)
+custom_maximum_size = Vector2(72, -1)
 layout_mode = 0
 offset_top = 800.0
 offset_right = 500.0
 offset_bottom = 872.0
 
 [node name="Hire" type="VBoxContainer" parent="UI/HUD" unique_id=1760243065]
-custom_minimum_size = Vector2(72, 500)
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 0
 offset_left = 250.0
 offset_top = 800.0
 offset_right = 250.0
 offset_bottom = 872.0
-alignment = 1
+
+[node name="UISlotMoreButton" parent="UI/HUD/Hire" unique_id=1881173578 instance=ExtResource("10_nh11s")]
+layout_mode = 2
+size_flags_horizontal = 1
+book_page = "hire"
+book_hot_key = "h"
+narrow = false
 
 [node name="StatsPanel" type="Panel" parent="UI/HUD" unique_id=262138526]
-custom_minimum_size = Vector2(604, 64)
-custom_maximum_size = Vector2(-1, 64)
+custom_minimum_size = Vector2(88, 540)
+custom_maximum_size = Vector2(88, -1)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Stats" type="HBoxContainer" parent="UI/HUD" unique_id=908252447]
-custom_minimum_size = Vector2(604, 64)
-custom_maximum_size = Vector2(-1, 72)
+[node name="Stats" type="VBoxContainer" parent="UI/HUD" unique_id=1106878692]
+custom_minimum_size = Vector2(88, 540)
+custom_maximum_size = Vector2(88, -1)
 layout_mode = 1
-offset_right = 72.0
+offset_right = 88.0
 offset_bottom = 540.0
 alignment = 1
 
@@ -201,6 +225,13 @@ icon = ExtResource("16_nh11s")
 layout_mode = 2
 icon = ExtResource("17_rc4em")
 
+[node name="UISlotMoreButton" parent="UI/HUD/Stats" unique_id=1296344071 instance=ExtResource("10_nh11s")]
+layout_mode = 2
+size_flags_horizontal = 1
+book_page = "stats"
+book_hot_key = ""
+narrow = false
+
 [node name="GodResponse" parent="UI/HUD" unique_id=1343575783 instance=ExtResource("18_5smp8")]
 visible = false
 layout_mode = 1
@@ -215,6 +246,14 @@ offset_top = 932.0
 offset_right = 235.0
 offset_bottom = 1032.0
 which = 1
+
+[node name="Book" parent="UI/HUD" unique_id=1646552966 instance=ExtResource("17_5smp8")]
+visible = false
+layout_mode = 1
+
+[node name="Gold" parent="UI/HUD" unique_id=198982514 instance=ExtResource("9_jck2h")]
+layout_mode = 1
+icon = ExtResource("10_2kpdr")
 
 [connection signal="mouse_entered" from="UI/HUD/Container" to="UI/HUD" method="_on_container_mouse_entered"]
 [connection signal="mouse_exited" from="UI/HUD/Container" to="UI/HUD" method="_on_container_mouse_exited"]

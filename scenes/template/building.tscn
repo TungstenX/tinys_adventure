@@ -6,14 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://bddtk27cnju0v" path="res://scenes/template/small_sign.tscn" id="5_1vr7i"]
 [ext_resource type="PackedScene" uid="uid://c83vq1vj6kq6q" path="res://scenes/template/popup_menu.tscn" id="5_8qos7"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_615lj"]
-size = Vector2(111, 70)
-
-[node name="Building" type="Node2D" unique_id=1016303689]
+[node name="Building" type="CharacterBody2D" unique_id=1739614392]
 script = ExtResource("1_3ruui")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=311354619]
 texture = ExtResource("1_4knj8")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1719221651]
+polygon = PackedVector2Array(-55, 47, -9, 76, 53, 45, 4, 21)
 
 [node name="SpeechBubble" parent="." unique_id=785480615 instance=ExtResource("2_3ruui")]
 visible = false
@@ -22,19 +22,20 @@ offset_top = -61.0
 offset_right = -1.0
 offset_bottom = -61.0
 
-[node name="Area2D" type="Area2D" parent="." unique_id=332671321]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1547036320]
-position = Vector2(-1.5, 43)
-shape = SubResource("RectangleShape2D_615lj")
-
 [node name="PopupMenu" parent="." unique_id=1575655396 instance=ExtResource("5_8qos7")]
 z_index = 99
 offset_top = -116.0
 offset_bottom = -116.0
 
 [node name="SmallSign" parent="." unique_id=943491670 instance=ExtResource("5_1vr7i")]
+y_sort_enabled = true
 position = Vector2(-7, 52)
 
-[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[node name="Area2D" type="Area2D" parent="." unique_id=1665932575]
+input_pickable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1231776165]
+polygon = PackedVector2Array(-85, 47, -11, 97, 84, 45, 5, 4)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

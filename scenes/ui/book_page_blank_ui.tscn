@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bfn1bihks7j58"]
+
+[ext_resource type="Texture2D" uid="uid://c3vpuigg1dnn7" path="res://assets/ui/elements/Carved_9Slides.png" id="2_ueuu0"]
+
+[node name="BookPageBlank" type="Control" unique_id=1254877519]
+custom_minimum_size = Vector2(476, 600)
+custom_maximum_size = Vector2(476, 600)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1444.0
+offset_bottom = -480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=299057775]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ueuu0")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c1ucd1uukjecb"]
+
+[ext_resource type="Texture2D" uid="uid://bcw48h16wdstc" path="res://assets/environment/props/mushroom_circle.png" id="1_gwx2s"]
+
+[node name="MushroomCircle" type="Node2D" unique_id=790950888]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2008338664]
+texture = ExtResource("1_gwx2s")
